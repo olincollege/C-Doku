@@ -1,9 +1,22 @@
 #include <stdio.h>
+#include <boards.c>
+
 
 int filled = 0;
 
+
+
 int main() {
   // get empty player board & completed board
+
+// initializing premade boards
+  struct computer_board board1;
+  board1.solution = &board_complete;
+  board1.initial = &board_start;
+  board1.level = 1;
+
+
+
   while (filled == 0) {
     // display player board
     // get player input (row, column, number)
