@@ -1,8 +1,15 @@
+/**
+ * Print out the visualization of the board in the terminal.
+ *
+ * This allows the user to update the board, then print the updated view of the board.
+ */
+
 #include <stdio.h>
 
 char board[9][9];
-void board_view()
+void print_board_view()
 {
+    // prints the board which is a character array
     printf("\n==============================================\n");
     printf("|  %c  .  %c  .  %c  |  %c  .  %c  .  %c  |  %c  .  %c  .  %c  |", board[0][0], board[0][1], board[0][2], board[0][3], board[0][4], board[0][5], board[0][6], board[0][7], board[0][8]);
     printf("\n|----.----.----|----.----.----|----.----.----|\n");
@@ -25,12 +32,20 @@ void board_view()
     printf("\n");
 }
 
-int main(void)
-{
-    board_view();
-}
-
-void update_board_view()
+void edit_board_view(int row, int col, int n)
 {
     // take in parameters (row, col, #) and put it into the corresponding place on the board
+    // adding '0' to int n converts the int to a char
+    board[row][col] = n + '0';
+}
+
+int main(void)
+{
+    // board_view();
+    board[0][0] = '1';           // sets row 1, column 1 equal to 1
+    printf("%c\n", board[0][0]); // prints row 1, column 1
+    print_board_view();          // prints the board view
+    edit_board_view(0, 0, 2);    // updates row 1, column 1 to be equal to 2
+    printf("%c\n", board[0][0]); // prints row 1, column 1
+    print_board_view();          // prints the updated board view
 }
