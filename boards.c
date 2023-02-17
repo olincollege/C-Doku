@@ -1,4 +1,6 @@
-// structs babey
+#include "boards.h"
+
+// structs
 struct computer_board {
   int (*solution)[9][9];
   int initial[9][9];
@@ -28,10 +30,10 @@ int board_complete[9][9] = {
     {7, 5, 2, 3, 9, 8, 6, 1, 4},
 };
 
+// struct computer_board board1;
 
-struct computer_board board1;
-
-// board1.solution[9][9] = {0, 9, 0, 2, 8, 0, 0, 0, 6}, {6, 2, 0, 0, 0, 0, 1, 0, 8},
+// board1.solution[9][9] = {0, 9, 0, 2, 8, 0, 0, 0, 6}, {6, 2, 0, 0, 0, 0, 1, 0,
+// 8},
 //     {0, 0, 7, 0, 0, 0, 0, 3, 0}, {8, 0, 3, 1, 0, 0, 4, 0, 0},
 //     {0, 0, 0, 0, 7, 0, 3, 6, 0}, {0, 7, 9, 0, 0, 0, 0, 0, 0},
 //     {1, 0, 0, 0, 0, 4, 9, 0, 2}, {9, 4, 0, 0, 0, 0, 8, 7, 0},

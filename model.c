@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-void update_board(int (*board)[9][9], int row, int col, int num) {
-  *board[row][col] = num;
+void update_board(int (*p_board)[9][9], int row, int col, int num) {
+  *p_board[row][col] = num;
 }
 
-int check_move(int (*com_board)[9][9], int (*p_board)[9][9], int row, int col, int num) {
+int check_move(int (*com_board)[9][9], int (*p_board)[9][9], int row, int col,
+               int num) {
   /*
   / int check = check_move(&answer, &player, 3, 3, 1);
     switch(check) {
@@ -26,45 +27,47 @@ int check_move(int (*com_board)[9][9], int (*p_board)[9][9], int row, int col, i
       default :
          printf("Code error :(" );
   */
-  // Fix h file 
+  // Fix h file
   // 2 = invalid index input
   // 3 = invalid number input
   // 4 = filled spot
-  // 0 = correct move 
+  // 0 = correct move
   // 1 = incorrect move
-  row--; 
+  row--;
   col--;
-  if (row < 0 || row >8 || col < 0||col > 8){
+  if (row < 0 || row > 8 || col < 0 || col > 8) {
     return 2;
   }
-  if (num < 1 || num > 9){
+  if (num < 1 || num > 9) {
     return 3;
   }
-  if (*p_board[row][col] != 0){
+  if (*p_board[row][col] != 0) {
     return 4;
-  }
-  else{
-    if(*com_board[row][col] == num){
+  } else {
+    if (*com_board[row][col] == num) {
       return 0;
-    }
-    else{
+    } else {
       return 1;
     }
   }
 }
 
 void board_complete(int (*p_board)[9][9], int *filled) {
-    for (int i = 0; i < 8; i++){
-      for (int j = 0; j < 8; j++){
-        if (*p_board[i][j] == 0){
-          *filled = 0;
-          return;
-        }
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (*p_board[i][j] == 0) {
+        *filled = 0;
+        return;
       }
     }
+  }
   *filled = 1;
 }
 
-int check_board(int (*board)[9][9]) {
-  // checks whether board given is filled in correctly
+int check_player_board(int (*board)[9][9]) {
+  // checks whether player board is filled in correctly compared to solution
+}
+
+int check_solution_board(int) {
+  // checks whether the solution board actually follows all of the rules
 }
