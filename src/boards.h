@@ -1,16 +1,20 @@
 #pragma once
+#include <stddef.h>
 
 // structs
-struct computer_board {
-  int (*solution)[9][9];
-  int initial[9][9];
-  int level;
+struct var_game_state {
+  char (*player_board)[8][8];
+  size_t errors;
+  size_t row;
+  size_t col;
+  size_t num;
 };
 
-struct player_board {
-  int board[9][9];
-  int level;
-  int mistakes;
+struct const_game_state {
+  char (*solution_board)[8][8];
+  char (*init_board)[8][8];
+  size_t level;
+  size_t max_errors;
 };
 
 // hard coded boards
