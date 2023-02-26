@@ -2,20 +2,20 @@
 #include <stddef.h>
 
 // structs
-struct var_game_state {
+typedef struct {
   char (*player_board)[8][8];
   size_t errors;
   size_t row;
   size_t col;
   size_t num;
-};
+}var_game_state;
 
-struct const_game_state {
+typedef struct {
   char (*solution_board)[8][8];
   char (*init_board)[8][8];
   size_t level;
   size_t max_errors;
-};
+}const_game_state;
 
 // hard coded boards
 int board_start[9][9] = {
