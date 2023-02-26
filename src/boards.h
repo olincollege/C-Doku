@@ -2,17 +2,22 @@
 #include <stddef.h>
 
 // structs
+
 typedef struct {
-  char (*player_board)[8][8];
+    int row; 
+    int col;
+    int num;
+} move;
+
+typedef struct {
+  char (*player_board)[9][9];
   size_t errors;
-  size_t row;
-  size_t col;
-  size_t num;
+  move p_move;
 }var_game_state;
 
 typedef struct {
-  char (*solution_board)[8][8];
-  char (*init_board)[8][8];
+  char (*solution_board)[9][9];
+  char (*init_board)[9][9];
   size_t level;
   size_t max_errors;
 }const_game_state;
