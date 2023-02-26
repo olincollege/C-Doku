@@ -4,23 +4,23 @@
 // structs
 
 typedef struct {
-    int row; 
-    int col;
-    int num;
+  int row;
+  int col;
+  int num;
 } move;
 
 typedef struct {
-  char (*player_board)[9][9];
+  char player_board[9][9];
   size_t errors;
   move p_move;
-}var_game_state;
+} var_game_state;
 
 typedef struct {
-  char (*solution_board)[9][9];
-  char (*init_board)[9][9];
+  char solution_board[9][9];
+  char init_board[9][9];
   size_t level;
   size_t max_errors;
-}const_game_state;
+} const_game_state;
 
 // hard coded boards
 int board_start[9][9] = {

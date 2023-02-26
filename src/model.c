@@ -1,67 +1,47 @@
+#include "boards.h"
 #include <stdio.h>
 
-void update_board(int p_board[9][9], int row, int col, int num) {
-  p_board[row][col] = num;
+void update_board(var_game_state var) {
+  var.player_board[var.p_move.row][var.p_move.col] = var.p_move.num;
 }
 
-int move_valid(int com_board[9][9], int p_board[9][9], int row, int col,
-               int num) {
-  /*
-  / int check = check_move(&answer, &player, 3, 3, 1);
-    switch(check) {
-      case 2 :
-         printf("Invalid index. Input a row and column between 1-9.\n" );
-         break;
-      case 3 :
-         printf("Invalid number. Input a number between 1-9.\n" );
-         break;
-      case 4 :
-         printf("Move already filled. Input a new index.\n" );
-         break;
-      default :
-         printf("Code error :(" );
-  */
-  // 2 = invalid index input
-  // 3 = invalid number input
-  // 4 = filled spot
-  if (row < 0 || row > 8 || col < 0 || col > 8) {
-    return 2;
+int check_fill(var_game_state var) {
+  // checks whether that spot is already filled
+  if (var.player_board[var.p_move.row][var.p_move.col] != ' ') {
+    return 1;
   }
-  if (num < 1 || num > 9) {
-    return 3;
-  }
-  if (p_board[row][col] != 0) {
-    return 4;
-  }
+  return 0;
 }
 
-int move_correct(int com_board[9][9], int p_board[9][9], int row, int col,
-                 int num) {
+int move_correct(var_game_state var, const_game_state consts) {
   // 0 = correct move
   // 1 = incorrect move
-  if (com_board[row][col] == num) {
+  if (consts.solution_board[var.p_move.row][var.p_move.col] == var.p_move.num) {
     return 0;
   }
   return 1;
 }
 
-void board_complete(int p_board[9][9], int *filled) {
+void board_complete(var_game_state var) {
+  // checks whether board is filled
+  // 0 = complete
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
-      if (p_board[i][j] == 0) {
-        *filled = 0;
-        return;
+      if (var.player_board[i][j] == ' ') {
+        return 1;
       }
     }
   }
-  *filled = 1;
+  return 0;
 }
 
-int check_player_board(int p_board[9][9], int com_board[9][9]) {
+int check_player_board(var_game_state var, const_game_state consts) {
   // checks whether player board is filled in correctly compared to solution
+  // 1 means incorrect
+  // 0 means correct
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
-      if (p_board[i][j] != com_board[i][j]) {
+      if (var.player_board[i][j] != consts.solution_board[i][j]) {
         return 1;
       }
     }
