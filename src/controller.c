@@ -6,6 +6,13 @@ void convert_move(char *input) {
   // converts input into 0-8 index
   input = (int)input - 1;
 }
+
+char* get_player_input() {
+    char* input[6];                                         // is required for player to follow the correct format when typing, otherwise it will be rejected
+    printf("Insert next move in row,col,num format: ");
+    fgets(input, sizeof(input),stdin);                      // scans player input into char pointer
+    return *input;
+}   // **MAKE SURE UR RETURNING A POINTER TO SOMETHING**
 char *get_player_input() {
   char *input[6]; // is required for player to follow the correct format when
                   // typing, otherwise it will be rejected
@@ -44,6 +51,21 @@ void add_player_move(char *input, var_game_state var) {
       // move[i] = (int)input[i];                // casting input as integer
       // before storing
 
+            switch(i) {
+                case 0: 
+                    convert_move(&input[i]);
+                    input[i] = var.p_move.row;
+                    break;
+                case 2:
+                    convert_move(&input[i]);
+                    input[i] = var.p_move.col;
+                    break;
+                case 4:
+                    input[i] = var.p_move.num;
+                    break;
+            }
+        }
+    }    
       switch (i) {
       case 0:
         convert_move(&input[i]);
