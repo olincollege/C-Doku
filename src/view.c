@@ -34,14 +34,14 @@ void print_board_view(char board[9][9])
     printf("\n  =====================================\n");
 }
 
-void reset_board()
+void reset_board(char board[9][9])
 {
     // clear board
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
         {
-            player_board[i][j] = ' ';
+            board[i][j] = ' ';
         }
     }
 }
@@ -55,7 +55,7 @@ void reset_board()
 //     print_board_view(player_board);     // prints the updated board view
 //     player_board[0][1] = '9';
 //     print_board_view(player_board);
-//     reset_board();
+//     reset_board(player_board);
 //     printf("%c\n", player_board[0][1]); // prints row 1, column 1
 //     print_board_view(player_board);
 // }
