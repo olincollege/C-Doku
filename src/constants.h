@@ -10,7 +10,7 @@ typedef struct {
 } move;
 
 typedef struct {
-  int player_board[9][9];
+  char player_board[9][9];
   size_t errors;
   move p_move;
 } var_game_state;
