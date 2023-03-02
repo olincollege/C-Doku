@@ -8,9 +8,8 @@ int main() {
   // BEYOND MVP: create empty player board & completed board
 
   // initialize premade board structs
-  move mv = {0, 0, 0};
-  const_game_state consts = {board_complete, board_start, 1, 3};
-  var_game_state var = {consts.init_board, 0, mv};
+  const_game_state consts = {board_solution, board_start, 1, 3};
+  var_game_state var = {consts.init_board, 0, {0, 0, 0}};
 
   // main loop; while board is not filled keep playing game
   while (1) {
