@@ -5,7 +5,6 @@
 #pragma once
 
 #include "model.h"
-// #include "constants.h"
 
 /**
  * Checks if the player's input was of the correct format.
@@ -47,4 +46,4 @@ char *get_player_input();
  * @return An array of integers representing the row, column, and number of the player's
  * move, in that order.
  */
-void add_player_move(char *input, var_game_state var);
+int add_player_move(char *input, var_game_state var);

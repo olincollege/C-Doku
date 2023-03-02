@@ -1,6 +1,9 @@
 #pragma once
 #include "model.h"
-
+enum
+{
+    BOARD_DIM = 9
+};
 /**
  * Print the player's current sudoku board in terminal.
  *
