@@ -19,6 +19,7 @@ int move_correct(var_game_state var, const_game_state consts) {
   return 1;
 }
 
+// TO DO Fix
 int board_complete(var_game_state var) {
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
