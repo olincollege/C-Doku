@@ -4,21 +4,8 @@
 
 #pragma once
 
-/**
- * Convert a given character into the index needed to edit array.
- * 
- * Given a character, this function converts it into an integer (assuming that all inputs
- * are numbers) and subtracts 1 from it. The intention behind this function is purely for
- * the functionality of the game. When a player inputs their desired move, the index they
- * provide for row and column will be numbers from 1-9. However, when indexing into the 
- * game board array, we need a number from 0-8, hence the subtraction. Additionally, the
- * player input will be taken in as a string since the input is coming from a keyboard. 
- * However, we need row and column to be integers in order to index into the array. 
- * Therefore, we convert it into an integer as well.
- * 
- * @param input A pointer to a character representing the character to be converted.
-*/
-void convert_move(char* input);
+#include "constants.h"
+
 
 /**
  * Checks if the player's input was of the correct format.
