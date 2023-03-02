@@ -8,6 +8,7 @@ void convert_move(char* input) {
     input = (int)input -1;
 
 }
+
 char* get_player_input() {
     char* input[6];                                         // is required for player to follow the correct format when typing, otherwise it will be rejected
     printf("Insert next move in row,col,num format: ");
@@ -54,8 +55,7 @@ void add_player_move(char* input, var_game_state var) {
                     break;
             }
         }
-    }
-    
+    }    
 }
 
 
