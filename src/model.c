@@ -1,4 +1,5 @@
-#include "boards.h"
+#include "constants.h"
+#include "model.h"
 #include <stdio.h>
 
 void update_board(var_game_state var) {
