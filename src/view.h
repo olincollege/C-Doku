@@ -1,7 +1,5 @@
 #pragma once
 
-#include <view.c>
-
 /**
  * Print the player's current sudoku board in terminal.
  *

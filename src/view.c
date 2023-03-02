@@ -5,6 +5,7 @@
  */
 
 #include <stdio.h>
+#include "view.h"
 
 char player_board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
 
@@ -52,6 +53,8 @@ int main(void)
     player_board[0][0] = '2';           // updates row 1, column 1 to be equal to 2
     printf("%c\n", player_board[0][0]); // prints row 1, column 1
     print_board_view(player_board);     // prints the updated board view
+    player_board[0][1] = '9';
+    print_board_view(player_board);
     reset_board();
     printf("%c\n", player_board[0][1]); // prints row 1, column 1
     print_board_view(player_board);
