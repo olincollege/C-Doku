@@ -1,4 +1,3 @@
-#include "constants.h"
 #include "model.h"
 #include <stdio.h>
 
@@ -50,6 +49,8 @@ int check_player_board(var_game_state var, const_game_state consts) {
   return 0;
 }
 
-int check_solution_board(int) {
+int check_solution_board(void) {
   // checks whether the solution board actually follows all of the rules
+  // UPDATE THIS
+  return 0;
 }

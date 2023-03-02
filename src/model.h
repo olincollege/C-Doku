@@ -1,20 +1,32 @@
 #pragma once
 
+#include "constants.h"
 #include <stddef.h>
 
 /**
  * Change the player's board according to the inputs given.
  *
- * Given the row, column, and number that the player inputs (and assuming the
- * input is correct), this function will replace the placeholder number 0 in the
- * game state player board with the given number.
+ * Given the variable game state board, this function will replace the space in the player board provided by the user with the number provided by the user.
+ *
+ * @param var a struct representing the variable game state
+ */
+void update_board(var_game_state var);
+
+/**
+ * Check whether a spot is already filled.
+ *
+ * Given a row, column, and number from a player input, this function checks the
+ * If the player's move is valid, the function returns 0. Otherwise, the
+ * function returns 1.
  *
  * @param board An array of arrays of integers that represent the player board.
  * @param row An integer representing the first array to index into.
  * @param col An integer representing the second array to index into.
  * @param num An integer representing the number to input into the board.
+ * @return An integer representing the validity of the move (1 if invalid, 0 if
+ * valid).
  */
-void update_board(int *board[9][9], int row, int col, int num);
+int check_fill(var_game_state var);
 
 /**
  * Check the validity of the move the player desires.
@@ -33,7 +45,7 @@ void update_board(int *board[9][9], int row, int col, int num);
  * @return An integer representing the validity of the move (1 if invalid, 0 if
  * valid).
  */
-int check_move(int *board[9][9], int row, int col, int num);
+int move_correct(var_game_state var, const_game_state consts);
 
 /**
  * Check whether the board is completely filled or not.
@@ -46,7 +58,7 @@ int check_move(int *board[9][9], int row, int col, int num);
  * @param filled A global integer representing the state of the board (filled or
  * not).
  */
-void board_complete(int *board[9][9], int *filled);
+void board_complete(var_game_state var);
 
 /**
  * Check whether the solution board is correct.
@@ -64,4 +76,22 @@ void board_complete(int *board[9][9], int *filled);
  * @param board An array of arrays of integers that represent the player board.
  * @return An integer representing the validity of the solution board.
  */
-int check_board(int *board[9][9]);
+int check_player_board(var_game_state var, const_game_state consts);
+
+/**
+ * Check whether the solution board is correct.
+ *
+ * When called, checks if the given board follows the game logic/rules. The
+ * logic this function checks is as follows:
+ *  - whether or not each space in each row contains different numbers 1-9.
+ *  - whether or not each space in each column contains different numbers 1-9.
+ *  - whether or not each in a 3x3 square of the 9x9 board contains different
+ * numbers 1-9.
+ *
+ * Should the solution board be correctly filled, the function returns the
+ * number 0. Otherwise, it returns the number 1.
+ *
+ * @param board An array of arrays of integers that represent the player board.
+ * @return An integer representing the validity of the solution board.
+ */
+int check_solution_board(void);
