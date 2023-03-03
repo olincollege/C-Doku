@@ -62,7 +62,7 @@ Test(add_player_move, normal_input) {
   var_game_state test1;
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
-  add_player_move(input, test1);
+  add_player_move(input, &test1);
   cr_assert(test1.p_move.row == 1, "Wrong row input!");
   cr_assert(test1.p_move.col == 2, "Wrong column input!");
   cr_assert(test1.p_move.num == 3, "Wrong num input!");
@@ -73,7 +73,7 @@ Test(add_player_move, input_with_same_number) {
   var_game_state test1;
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
-  add_player_move(input, test1);
+  add_player_move(input, &test1);
   cr_assert(test1.p_move.row == 1, "Wrong row input!");
   cr_assert(test1.p_move.col == 1, "Wrong column input!");
   cr_assert(test1.p_move.num == 1, "Wrong num input!");

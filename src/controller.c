@@ -19,8 +19,7 @@
  * @param input A pointer to a character representing the character to be converted.
 */
 static int convert_move(const char input) {
-  int old = atoi(input);
-  return old - 1;
+  return (int)input - 1;
 }
 
 int check_valid_input(char *input) {
@@ -48,7 +47,7 @@ char* get_player_input() { // is required for player to follow the correct forma
 }
 
 int add_player_move(char* input, var_game_state *var) {
-  for (int i = 0; i < strlen(input) - 1; i++) { // if not a comma, write into struct
+  for (size_t i = 0; i < strlen(input) - 1; i++) { // if not a comma, write into struct
     if (input[i] != ',') {
       switch(i) {
       case 0: 
