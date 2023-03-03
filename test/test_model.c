@@ -2,7 +2,7 @@
 #include <criterion/new/assert.h>
 
 #include "../src/model.h"
-#include "../src/constants.h"
+
 // Create starting board for tests
 var_game_state make_starting_board(void){
   var_game_state test = {.player_board = {
@@ -50,7 +50,7 @@ const_game_state make_const_complete_board(void){
       "752398614"
     }
   };
-  return solution_board
+  return solution_board;
 }
 
 //update_board tests: 3 correct moves, 1 incorrect move, 2 overwriting moves

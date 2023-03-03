@@ -46,4 +46,4 @@ char *get_player_input();
  * @return An array of integers representing the row, column, and number of the player's
  * move, in that order.
  */
-int add_player_move(char *input, var_game_state var);
+int add_player_move(char *input, var_game_state *var);

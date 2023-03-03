@@ -1,6 +1,7 @@
 #include "controller.h"
-#include "constants.h"
+#include "model.h"
 #include <stdio.h>
+#include<string.h>
 
 
 /**
@@ -17,60 +18,54 @@
  * 
  * @param input A pointer to a character representing the character to be converted.
 */
-static void convert_move(char *input) {
-  // converts input into 0-8 index
-  input = (int)input - 1;
+static int convert_move(const char input) {
+  return (int)input - 1;
 }
 
 int check_valid_input(char *input) {
-  const char *valid_nums =
-      "12345689"; // verifying input is an int (in char form at this pt)
+  const char *valid_nums = "12345689";
 
-  for (int i = 0; i < strlen(input) - 1;
-       i++) {         // looping through player's input string
+  for (int i = 0; i < strlen(input) - 1; i++) { // looping through player's input string
     if (i % 2 == 0) { // if its even
-      if (strstr(valid_nums, input[i]) == NULL) { // if integers are actually correct
+      if (strchr(valid_nums, input[i]) == NULL) { // if integers are actually correct
         return 1;
       }
     } else {
-      if (input[i] != ",") { // if the commas are correct
+      if (input[i] != ',') { // if the commas are correct
         return 1;
       }
     }
   }
-
   return 0;
 }
 
-char* get_player_input() {
-    char* input[6];                                         // is required for player to follow the correct format when typing, otherwise it will be rejected
-    printf("Insert next move in row,col,num format: ");
-    fgets(input, sizeof(input),stdin);                      // scans player input into char pointer
-    return *input;
-}   // **MAKE SURE UR RETURNING A POINTER TO SOMETHING**
+char* get_player_input() { // is required for player to follow the correct format when typing, otherwise it will be rejected
+  static char input[6];
+  printf("Insert next move in row,col,num format: ");
+  char* str = fgets(input, sizeof(input),stdin); // scans player input into char pointer
+  return (&input); // **MAKE SURE UR RETURNING A POINTER TO SOMETHING**
+}
 
-void add_player_move(char *input, var_game_state var) {
-  // int* move[3];
-
-  for (int i = 0; i < strlen(input) - 1; i++) { // if not a comma, copy into final array
-    if (input[i] != ",") {
-      // move[i] = (int)input[i];                // casting input as integer
-      // before storing
-
+int add_player_move(char* input, var_game_state *var) {
+  for (size_t i = 0; i < strlen(input) - 1; i++) { // if not a comma, write into struct
+    if (input[i] != ',') {
       switch(i) {
-        case 0: 
-          convert_move(&input[i]);
-          input[i] = var.p_move.row;
-          break;
-        case 2:
-          convert_move(&input[i]);
-          input[i] = var.p_move.col;
-          break;
-        case 4:
-          input[i] = var.p_move.num;
-          break;
+      case 0: 
+        int num_row = convert_move(input[i]);
+        var->p_move.row = num_row;
+        break;
+      case 2:
+        int num_col = convert_move(input[i]);
+        var->p_move.col = num_col;
+        break;
+      case 4:
+        input[i] = var->p_move.num;
+        break;
+      default: 
+        return 1;
       }
     }
-  }   
+  }  
+  return 0; 
 }
 
