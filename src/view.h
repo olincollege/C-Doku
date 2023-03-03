@@ -21,8 +21,7 @@ void print_board_view(char board[BOARD_DIM][BOARD_DIM]);
  *
  * @param board The existing char array of characters.
  */
-void reset_board(char board[9][9]);
-
+void reset_board(char board[BOARD_DIM][BOARD_DIM]);
 /**
  * Print the result of the game.
  *
@@ -32,4 +31,3 @@ void reset_board(char board[9][9]);
  * player won.
  */
 void print_result();
-void reset_board(char board[BOARD_DIM][BOARD_DIM]);
