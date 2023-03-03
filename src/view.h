@@ -1,9 +1,6 @@
 #pragma once
 #include "model.h"
-enum
-{
-    BOARD_DIM = 9
-};
+
 /**
  * Print the player's current sudoku board in terminal.
  *
@@ -13,7 +10,7 @@ enum
  *
  * @param board The existing char array of characters.
  */
-void print_board_view(char board[9][9]);
+void print_board_view(char board[BOARD_DIM][BOARD_DIM]);
 
 /**
  * Reset the player's current sudoku board in terminal.
@@ -24,4 +21,4 @@ void print_board_view(char board[9][9]);
  *
  * @param board The existing char array of characters.
  */
-void reset_board(char board[9][9]);
+void reset_board(char board[BOARD_DIM][BOARD_DIM]);

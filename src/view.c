@@ -34,7 +34,7 @@ void print_board_view(char board[BOARD_DIM][BOARD_DIM])
     printf("\n  =====================================\n");
 }
 
-void reset_board(char board[9][9])
+void reset_board(char board[BOARD_DIM][BOARD_DIM])
 {
     // clear board
     for (int i = 0; i < 9; i++)

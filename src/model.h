@@ -1,10 +1,20 @@
-#pragma once
+// #pragma once
 
 // #include "constants.h"
 #include <stddef.h>
 
-// structs
+// Define useful constants needed in the program.
+enum {
+  /** Dimensions of sudoku board.*/
+  BOARD_DIM = 9,
+  /** Number of errors allowed.*/
+  ERRORS = 3,
+};
 
+// Define game state structs
+
+// The player's inputted move represented by the row and column of the move and
+// the number itself.
 typedef struct
 {
     int row;
@@ -12,37 +22,34 @@ typedef struct
     char num;
 } move;
 
+
+// The parts of the sudoku game that change, including the player's board, the
+// number of errors the player has made, and the player's moves.
 typedef struct
 {
-    char player_board[9][9];
+    char player_board[BOARD_DIM][BOARD_DIM];
     size_t errors;
     move p_move;
 } var_game_state;
 
+// The parts of the sudoku game that do not change, including the initial board,
+// the solution board, the level, and the maximum number of levels.
 typedef struct
 {
-    char solution_board[9][9];
-    char init_board[9][9];
+    char solution_board[BOARD_DIM][BOARD_DIM];
+    char init_board[BOARD_DIM][BOARD_DIM];
     size_t level;
     size_t max_errors;
 } const_game_state;
 
 // // hard coded boards
-const char board_start[9][9] = {" 9 28   6", "62    1 8", "  7    3 ",
+const char board_start[BOARD_DIM][BOARD_DIM] = {" 9 28   6", "62    1 8", "  7    3 ",
                                 "8 31  4  ", "    7 36 ", " 79      ",
                                 "1    49 2", "94    87 ", "     8   "};
 
-const char board_solution[9][9] = {"391285746", "625437198", "487916235",
+const char board_solution[BOARD_DIM][BOARD_DIM] = {"391285746", "625437198", "487916235",
                                    "863159427", "514872369", "279643581",
                                    "138764952", "946521873", "752398614"};
-
-// struct computer_board board1;
-
-// board1.solution[9][9] = {0, 9, 0, 2, 8, 0, 0, 0, 6}, {6, 2, 0, 0, 0, 0, 1, 0, 8},
-//     {0, 0, 7, 0, 0, 0, 0, 3, 0}, {8, 0, 3, 1, 0, 0, 4, 0, 0},
-//     {0, 0, 0, 0, 7, 0, 3, 6, 0}, {0, 7, 9, 0, 0, 0, 0, 0, 0},
-//     {1, 0, 0, 0, 0, 4, 9, 0, 2}, {9, 4, 0, 0, 0, 0, 8, 7, 0},
-//     {0, 0, 0, 0, 0, 8, 0, 0, 0};
 
 /**
  * Change the player's board according to the inputs given.
