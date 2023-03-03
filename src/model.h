@@ -1,4 +1,4 @@
-// #pragma once
+#pragma once
 
 // #include "constants.h"
 #include <stddef.h>
@@ -59,7 +59,7 @@ const char board_solution[BOARD_DIM][BOARD_DIM] = {"391285746", "625437198", "48
  *
  * @param var A struct that contains the variables in the game state.
  */
-void update_board(var_game_state var);
+void update_board(var_game_state *var);
 
 /**
  * Check whether a spot is already filled.
@@ -73,7 +73,7 @@ void update_board(var_game_state var);
  * @return An integer representing whether the spot is filled (0 if
  * empty, 1 if filled).
  */
-int check_fill(var_game_state var);
+int check_fill(var_game_state *var);
 
 /**
  * Check whether the move is correct.
@@ -88,7 +88,7 @@ int check_fill(var_game_state var);
  * @return An integer representing whether the move is correct (0 if
  * correct, 1 if incorrect).
  */
-int move_correct(var_game_state var, const_game_state consts);
+int move_correct(var_game_state *var, const_game_state *consts);
 
 /**
  * Check whether the board is completely filled or not.
@@ -100,7 +100,7 @@ int move_correct(var_game_state var, const_game_state consts);
  * @return An integer representing whether the board is filled (0 if
  * filled, 1 if not filled).
  */
-int board_complete(var_game_state var);
+int board_complete(var_game_state *var);
 
 /**
  * Check whether the player's completed board is filled in correctly.
@@ -119,7 +119,7 @@ int board_complete(var_game_state var);
  * @param consts A struct that contains the constants in the game state.
  * @return An integer representing whether the board is correctly filled.
  */
-int check_player_board(var_game_state var, const_game_state consts);
+int check_player_board(var_game_state *var, const_game_state *consts);
 
 /**
  * TO DO - Fix this after implementing this function
