@@ -59,21 +59,21 @@ const_game_state make_const_complete_board(void){
 Test(update_board, correct_move_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {0,0,'3'};
-  update_board(test);
+  update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col], '3'));
 }
 // Update [9][9] = 4
 Test(update_board, correct_move_2) {
    var_game_state test = make_starting_board();
    test.p_move = (move){9,9,'4'};
-   update_board(test);
+   update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col],'4'));
 }
 // Update [5][3] = 6
 Test(update_board, correct_move_3) {
    var_game_state test = make_starting_board();
    test.p_move = (move){5,3,'6'};
-   update_board(test);
+   update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col], '6'));
 }
 //Wrong Move: value incorrect from board complete
@@ -81,7 +81,7 @@ Test(update_board, correct_move_3) {
 Test(update_board, wrong_move_overwrite_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {0,2,'4'};
-  update_board(test);
+  update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col], '4'));
 }
 //Wrong Move: overwrite a filled board with wrong number
@@ -89,7 +89,7 @@ Test(update_board, wrong_move_overwrite_1) {
 Test(update_board, wrong_move_overwrite_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {0,1,'1'};
-  update_board(test);
+  update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col], '1'));
 }
 //Wrong Move: overwrite a filled board with wrong number
@@ -97,7 +97,7 @@ Test(update_board, wrong_move_overwrite_1) {
 Test(update_board, wrong_move_overwrite_2) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {6,5,'8'};
-  update_board(test);
+  update_board(&test);
   cr_assert(eq(char, test.player_board[test.p_move.row][test.p_move.col], '8'));
 }
 
@@ -106,18 +106,18 @@ Test(update_board, wrong_move_overwrite_2) {
 Test(check_filled, filled_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {0,1,'2'};
-  cr_assert(eq(int, check_fill(test), 1));
+  cr_assert(eq(int, check_fill(&test), 1));
 }
 Test(check_filled, filled_2) {
   var_game_state test = make_complete_board();
   test.p_move = (move) {5,8,'2'};
-  cr_assert(eq(int, check_fill(test), 1));
+  cr_assert(eq(int, check_fill(&test), 1));
 }
 //Check a empty spot
 Test(check_filled, empty_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move) {0,0, '3'};
-  cr_assert(eq(int, check_fill(test), 0));
+  cr_assert(eq(int, check_fill(&test), 0));
 }
 
 // check_move 
@@ -126,57 +126,69 @@ Test(move_correct, move_correct_1) {
   var_game_state test = make_starting_board();
   const_game_state answer = make_const_complete_board();
   test.p_move = (move) {0,0,3};
-  cr_assert(eq(int, move_correct(test,answer), 0));
+  cr_assert(eq(int, move_correct(&test,&answer), 0));
 }
 Test(move_correct, move_incorrect_1) {
   var_game_state test = make_starting_board();
   const_game_state answer = make_const_complete_board();
   test.p_move = (move) {0,0,4};
-  cr_assert(eq(int, move_correct(test,answer), 1));
+  cr_assert(eq(int, move_correct(&test,&answer), 1));
 }
 // board_complete
 // complete
 Test(board_complete, complete_1) {
   var_game_state test = make_complete_board();
-  cr_assert(eq(int, board_complete(test), 0));
+  cr_assert(eq(int, board_complete(&test), 0));
 }
 //incomplete starting board 
 Test(board_complete, incomplete_start) {
   var_game_state test = make_starting_board();
-  cr_assert(eq(int, board_complete(test), 0));
+  cr_assert(eq(int, board_complete(&test), 0));
 }
 //incomplete complete board with last value empty 
 Test(board_complete, incomplete_1_less) {
   var_game_state test = make_complete_board();
   test.player_board[8][8] = ' ';
-  cr_assert(eq(int, board_complete(test), 0));
+  cr_assert(eq(int, board_complete(&test), 0));
 }
 //check_player_board
 //Correct
 Test(check_player_board, correct_1) {
   var_game_state test = make_complete_board();
   const_game_state answer = make_const_complete_board();
-  cr_assert(eq(int, check_player_board(test, answer), 0));
+  cr_assert(eq(int, check_player_board(&test, &answer), 0));
 }
 // Incorrect: start board vs complete
 Test(check_player_board, incorrect_start) {
   var_game_state test = make_starting_board();
   const_game_state answer = make_const_complete_board();
-  cr_assert(eq(int, check_player_board(test,answer), 1));
+  cr_assert(eq(int, check_player_board(&test,&answer), 1));
 }
 // Incorrect: complete board with 1 empty spot vs complete
 Test(check_player_board, incorrect_missing) {
   var_game_state test = make_complete_board();
   test.player_board[8][8] = ' ';
   const_game_state answer = make_const_complete_board();
-  cr_assert(eq(int, check_player_board(test,answer), 1));
+  cr_assert(eq(int, check_player_board(&test,&answer), 1));
 }
 // Incorrect: complete board with 1 wrong number vs complete
 Test(check_player_board, incorrect_1_number) {
   var_game_state test = make_complete_board();
   test.player_board[8][8] = '5';
   const_game_state answer = make_const_complete_board();
-  cr_assert(eq(int, check_player_board(test,answer), 1));
+  cr_assert(eq(int, check_player_board(&test,&answer), 1));
 }
 
 // check_solution_board
+Test(check_solution_board, correct_1) {
+  var_game_state test = make_complete_board();
+  test.player_board[8][8] = '5';
+  const_game_state answer = make_const_complete_board();
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+//incorrect_board
+Test(check_solution_board, correct_1) {
+  
+  const_game_state answer = make_const_complete_board();
+  cr_assert(eq(int, check_solution_board(&answer), 1));
+}
