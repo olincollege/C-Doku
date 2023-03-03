@@ -4,7 +4,6 @@
 
 #include "../src/controller.h"
 
-
 Test(check_valid_input, valid_input_given) {
   const char *input = "1,2,3";
   const int ans = 0;
@@ -42,23 +41,25 @@ Test(check_valid_input, all_nums) {
 }
 
 Test(get_player_input, correct_input) {
-  FILE* stdin_file = cr_get_redirected_stdin();
+  FILE *stdin_file = cr_get_redirected_stdin();
   (void)fprintf(stdin_file, "1,2,3\n");
   (void)fclose(stdin_file);
-  const char* output = get_player_input();
-  cr_assert(output == "1,2,3", "Input incorrectly");
+  char *input;
+  get_player_input(input);
+  cr_assert(input == "1,2,3", "Input incorrectly");
 }
 
 Test(get_player_input, same_input) {
-  FILE* stdin_file = cr_get_redirected_stdin();
+  FILE *stdin_file = cr_get_redirected_stdin();
   (void)fprintf(stdin_file, "1,1,1\n");
   (void)fclose(stdin_file);
-  const char* output = get_player_input();
-  cr_assert(output == "1,1,1", "Input incorrectly");
+  const char *input;
+  get_player_input(input);
+  cr_assert(input == "1,1,1", "Input incorrectly");
 }
 
 Test(add_player_move, normal_input) {
-  const char* input = "1,2,3";
+  const char *input = "1,2,3";
   var_game_state test1;
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
@@ -69,7 +70,7 @@ Test(add_player_move, normal_input) {
 }
 
 Test(add_player_move, input_with_same_number) {
-  const char* input = "1,1,1";
+  const char *input = "1,1,1";
   var_game_state test1;
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
