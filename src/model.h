@@ -135,7 +135,7 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  * Should the solution board be correctly filled, the function returns the
  * number 0. Otherwise, it returns the number 1.
  *
- * @param var A struct that contains the variables in the game state.
+ * @param consts A struct that contains the solution board. 
  * @return An integer representing the validity of the solution board.
  */
-int check_solution_board(void);
+int check_solution_board(const_game_state *consts);

@@ -55,7 +55,7 @@ int check_player_board(var_game_state *var, const_game_state *consts)
   return 0;
 }
 
-int check_solution_board(void)
+int check_solution_board(const_game_state *consts)
 {
   // TO DO - Implement this function
   // checks whether the solution board actually follows all of the rules
