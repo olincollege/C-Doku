@@ -25,3 +25,13 @@ void print_board_view(char board[9][9]);
  * @param board The existing char array of characters.
  */
 void reset_board(char board[9][9]);
+
+/**
+ * Print the result of the game.
+ *
+ * When the player gets exactly 3 errors before the board is filled, then the
+ * functions prints out that the player lost. If the player is able to fill
+ * the board before the error reaches 3, then the function prints that the
+ * player won.
+ */
+void print_result();

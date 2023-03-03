@@ -45,6 +45,13 @@ void reset_board(char board[9][9])
         }
     }
 }
+
+void print_result()
+{
+
+    printf("YOU WIN! :D");
+    printf("YOU LOSE :(");
+}
 // int main(void)
 // {
 //     player_board[0][0] = '1';           // sets row 1, column 1 equal to 1
