@@ -40,13 +40,11 @@ int check_valid_input(char *input) {
   return 0;
 }
 
-char *get_player_input() { // is required for player to follow the correct
+void get_player_input(char *input) { // is required for player to follow the correct
                            // format when typing, otherwise it will be rejected
-  static char input[6];
   printf("Insert next move in row,col,num format: ");
   (void)fgets(input, sizeof(input),
               stdin); // scans player input into char pointer
-  return input;
 }
 
 int add_player_move(char *input, var_game_state *var) {

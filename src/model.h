@@ -9,6 +9,8 @@ enum {
   BOARD_DIM = 9,
   /** Number of errors allowed.*/
   ERRORS = 3,
+  /** Max size of input*/
+  BUFFER = 6,
 };
 
 // Define game state structs
@@ -43,14 +45,8 @@ typedef struct
 } const_game_state;
 
 // // hard coded boards
-const char board_start[BOARD_DIM][BOARD_DIM] = {" 9 28   6", "62    1 8", "  7    3 ",
-                                "8 31  4  ", "    7 36 ", " 79      ",
-                                "1    49 2", "94    87 ", "     8   "};
-
-const char board_solution[BOARD_DIM][BOARD_DIM] = {"391285746", "625437198", "487916235",
-                                   "863159427", "514872369", "279643581",
-                                   "138764952", "946521873", "752398614"};
-
+extern const char board_start[BOARD_DIM][BOARD_DIM];
+extern const char board_solution[BOARD_DIM][BOARD_DIM];
 /**
  * Change the player's board according to the inputs given.
  *

@@ -33,7 +33,7 @@ int check_valid_input(char *input);
  *
  * @return A string representing the raw input from the player.
  */
-char *get_player_input();
+void get_player_input(char *input);
 
 /**
  * Parses the player input and saves the integer values into an array of integers.
