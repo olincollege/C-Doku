@@ -1,7 +1,7 @@
 #pragma once
 
-// #include "constants.h"
 #include <stddef.h>
+#include <stdio.h>
 
 // Define useful constants needed in the program.
 enum {
@@ -47,6 +47,8 @@ typedef struct
 // // hard coded boards
 extern const char board_start[BOARD_DIM][BOARD_DIM];
 extern const char board_solution[BOARD_DIM][BOARD_DIM];
+
+
 /**
  * Change the player's board according to the inputs given.
  *

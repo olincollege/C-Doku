@@ -2,11 +2,23 @@
 #include "model.h"
 #include "view.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main() {
+int main(void) {
   // BEYOND MVP: create empty player board & completed board
 
   // initialize premade board structs
+  // const_game_state consts;
+  // var_game_state var;
+
+  // consts.max_errors = 1;
+  // memcpy(consts.solution_board, board_solution, sizeof(consts.solution_board));
+  // memcpy(consts.init_board, board_start, sizeof(consts.init_board));
+
+  // memcpy(var.player_board, consts.init_board, sizeof(var.player_board));
+  // var.errors = 0;
+
   const_game_state consts = {
     .solution_board = board_solution, 
     .init_board = board_start, 
@@ -25,13 +37,13 @@ int main() {
     print_board_view(var.player_board);
     // get player input
     char *input[BUFFER];
-    get_player_input(input);
+    get_player_input(*input);
     // TO DO - check whether this returns 0 or 1 if correct
-    if (check_valid_input(input) != 0) {
+    if (check_valid_input(*input) != 0) {
       printf("Please use correct format");
       continue;
     }
-    add_player_move(input, &var);
+    add_player_move(*input, &var);
     if (check_fill(&var) != 0) {
       printf("Spot is already filled. Make a new move");
       continue;
@@ -51,5 +63,26 @@ int main() {
       break;
     }
   }
-  puts("rerun this function to play again idk");
+
+
+  //   while (!game_over(&state)) {
+  //   print_board(state.board);
+  //   printf("It is now %c's move.\n", state.current_turn);
+  //   board_space space;
+  //   if (get_user_input(&space) == 0 || move(&state, space) == 0) {
+  //     puts("Invalid move, please try again.");
+  //     continue;
+  //   }
+  // }
+  // if (player_win(&state)) {
+  //   printf("%c wins in %zu moves!\n", get_opposing_player(state.current_turn),
+  //          state.num_moves);
+  // } else {
+  //   // The only other way the game can end is if the board is full and nobody's
+  //   // won, which is a draw.
+  //   printf("It's a draw.\n");
+  // }
+
+
+  return EXIT_SUCCESS;
 }

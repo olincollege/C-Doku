@@ -1,5 +1,4 @@
 #include "model.h"
-#include <stdio.h>
 
 const char board_start[BOARD_DIM][BOARD_DIM] = {" 9 28   6", "62    1 8", "  7    3 ",
                                 "8 31  4  ", "    7 36 ", " 79      ",
@@ -35,9 +34,9 @@ int move_correct(var_game_state *var, const_game_state *consts)
 // TO DO Fix
 int board_complete(var_game_state *var)
 {
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < (BOARD_DIM-1); i++)
   {
-    for (int j = 0; j < 8; j++)
+    for (int j = 0; j < (BOARD_DIM-1); j++)
     {
       if (var->player_board[i][j] == ' ')
       {
@@ -50,9 +49,9 @@ int board_complete(var_game_state *var)
 
 int check_player_board(var_game_state *var, const_game_state *consts)
 {
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < (BOARD_DIM-1); i++)
   {
-    for (int j = 0; j < 8; j++)
+    for (int j = 0; j < (BOARD_DIM-1); j++)
     {
       if (var->player_board[i][j] != consts->solution_board[i][j])
       {
