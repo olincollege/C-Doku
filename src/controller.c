@@ -40,8 +40,9 @@ int check_valid_input(char *input) {
   return 0;
 }
 
-void get_player_input(char *input) { // is required for player to follow the correct
-                           // format when typing, otherwise it will be rejected
+void get_player_input(
+    char *input) { // is required for player to follow the correct
+                   // format when typing, otherwise it will be rejected
   printf("Insert next move in row,col,num format: ");
   (void)fgets(input, sizeof(input),
               stdin); // scans player input into char pointer
