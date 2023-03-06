@@ -24,9 +24,16 @@ var_game_state make_complete_board(void) {
 }
 const_game_state make_const_complete_board(void) {
   const_game_state solution_board = {
-      .solution_board = {"391285746", "625437198", "487916235", "863159427",
-                         "514872369", "279643581", "138764952", "946521873",
-                         "752398614"}};
+      .solution_board = {
+      "391285746", 
+      "625437198", 
+      "487916235", 
+      "863159427",        
+      "514872369", 
+      "279643581", 
+      "138764952", 
+      "946521873",
+      "752398614"}};
   return solution_board;
 }
 

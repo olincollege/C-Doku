@@ -7,7 +7,7 @@
 // Define useful constants needed in the program.
 enum {
   /** Dimensions of sudoku board.*/
-  BOARD_DIM = 9,
+  BOARD_DIM  = 9,
   /** Number of errors allowed.*/
   ERRORS = 3,
   /** Max size of input*/

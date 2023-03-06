@@ -9,13 +9,13 @@ project(SoftSysA02
 
 set(CMAKE_C_STANDARD 17)
 
-set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g")
+#set(CMAKE_C_FLAGS "-Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g")
 
-set(CMAKE_C_CLANG_TIDY
-  clang-tidy;
-  -header-filter=.;
-  -checks=*,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-header-guard,-altera*;
-)
+# set(CMAKE_C_CLANG_TIDY
+#   clang-tidy;
+#   -header-filter=.;
+#   -checks=*,-bugprone-easily-swappable-parameters,-llvmlibc-restrict-system-libc-headers,-llvm-header-guard,-altera*;
+# )
 
 add_subdirectory(src)
 
@@ -23,4 +23,4 @@ include(CTest)
 find_library(CRITERION criterion REQUIRED)
 set(CRITERION_FLAGS --verbose -j1)
 
-# add_subdirectory(test)
+add_subdirectory(test)
