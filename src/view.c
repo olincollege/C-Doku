@@ -5,11 +5,13 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "view.h"
+#include "model.h"
 
-char player_board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
-
-void print_board_view(char board[BOARD_DIM][BOARD_DIM])
+// char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+// char board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
+void print_board_view(char board[9][9])
 {
     // prints the board which is a character array
     printf("    1   2   3   4   5   6   7   8   9");
@@ -31,38 +33,81 @@ void print_board_view(char board[BOARD_DIM][BOARD_DIM])
     printf("8 | %c : %c : %c | %c : %c : %c | %c : %c : %c |", board[7][0], board[7][1], board[7][2], board[7][3], board[7][4], board[7][5], board[7][6], board[7][7], board[7][8]);
     printf("\n  |---:---:---|---:---:---|---:---:---|\n");
     printf("9 | %c : %c : %c | %c : %c : %c | %c : %c : %c |", board[8][0], board[8][1], board[8][2], board[8][3], board[8][4], board[8][5], board[7][6], board[7][7], board[7][8]);
+
     printf("\n  =====================================\n");
 }
 
-void reset_board(char board[BOARD_DIM][BOARD_DIM])
+void print_board(var_game_state *var)
+{
+    const char *row_divider = "  |---:---:---|---:---:---|---:---:---|";
+    const char *outer_border = "  =====================================";
+    printf("    1   2   3   4   5   6   7   8   9\n");
+
+    for (int row = 0; row < BOARD_DIM; ++row)
+    {
+        if (row == 0 || (row % 3 == 0 && row >= 3))
+        {
+            printf("%s\n", outer_border);
+        }
+        else
+        {
+            printf("%s\n", row_divider);
+        }
+        printf("%c ", row + 1 + '0');
+        for (int col = 0; col < BOARD_DIM; ++col)
+        {
+            if (col == 0 || (col % 3 == 0 && col >= 3))
+            {
+
+                printf("| %c ", var->player_board[row][col]);
+            }
+            else
+            {
+                printf(": %c ", var->player_board[row][col]);
+            }
+        }
+        printf("|\n");
+    }
+    printf("%s\n", outer_border);
+}
+
+void reset_board(var_game_state *var)
 {
     // clear board
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
         {
-            board[i][j] = ' ';
+            var->player_board[i][j] = ' ';
         }
     }
 }
 
-void print_result()
+int print_result(var_game_state *var)
 {
-
-    printf("YOU WIN! :D");
-    printf("YOU LOSE :(");
+    if (var->errors == 3)
+    {
+        printf("YOU LOSE :(");
+        return 1;
+    }
+    // if (board_complete(var) == 0)
+    // {
+    //     printf("YOU WIN! :D");
+    //     return 1;
+    // }
+    return 0;
 }
-// int main(void)
-// {
-//     player_board[0][0] = '1';           // sets row 1, column 1 equal to 1
-//     printf("%c\n", player_board[0][0]); // prints row 1, column 1
-//     print_board_view(player_board);     // prints the board view
-//     player_board[0][0] = '2';           // updates row 1, column 1 to be equal to 2
-//     printf("%c\n", player_board[0][0]); // prints row 1, column 1
-//     print_board_view(player_board);     // prints the updated board view
-//     player_board[0][1] = '9';
-//     print_board_view(player_board);
-//     reset_board(player_board);
-//     printf("%c\n", player_board[0][1]); // prints row 1, column 1
-//     print_board_view(player_board);
-// }
+int main(void)
+{
+    var_game_state test, *var;
+    char board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
+    var = &test;
+    // printf("%s\n", var);
+    // printf("%c\n", var->player_board[0][5]);
+    strcpy(var->player_board, board);
+    print_board(var);
+    //     player_board[5][7] = '2';
+    //     player_board[1][3] = '9';
+    //     print_board_view(player_board);
+    // print_board_view(board);
+}
