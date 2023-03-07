@@ -48,7 +48,7 @@ Test(get_player_input, correct_input) {
   (void)fprintf(stdin_file, "1,2,3\n");
   (void)fclose(stdin_file);
   get_player_input(input);
-  cr_assert(strcmp(input,"1,2,3")==0, "Input incorrectly");
+  cr_assert(strcmp(input,"1,2,3")==0, "Input incorrectly. Expected %s, got %s", "1,2,3", input);
 }
 
 
@@ -74,8 +74,6 @@ Test(get_player_input, same_input) {
 Test(add_player_move, normal_input) {
   char *input = "1,2,3";
   var_game_state test1;
-  test1.player_board[9][9] = board_start;
-  test1.errors = 0;
   add_player_move(input, &test1);
   cr_assert(test1.p_move.row == 0, "Wrong row input!");
   cr_assert(test1.p_move.col == 1, "Wrong column input!");
@@ -85,8 +83,6 @@ Test(add_player_move, normal_input) {
 Test(add_player_move, input_with_same_number) {
   char * input = "1,1,1";
   var_game_state test1;
-  test1.player_board[9][9] = board_start;
-  test1.errors = 0;
   add_player_move(input, &test1);
   cr_expect(test1.p_move.row == 0, "Wrong row input! Expected %i, got %i", 0, test1.p_move.row);
   cr_expect(test1.p_move.col == 0, "Wrong column input! Expected %i, got %i", 0, test1.p_move.col);
