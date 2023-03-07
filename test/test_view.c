@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "../src/view.h"
+#include "../src/model.h"
 
 // Check that an empty board prints correctly.
 Test(reset_board, empty_board, .init = cr_redirect_stdout)
