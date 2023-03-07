@@ -33,16 +33,24 @@ int main(void) {
 
   // main loop; while board is not filled keep playing game
   while (1) {
+
+    // check win/lose condition
+    if (var.errors > 2) {
+      puts("you lost\n"); // REPLACE WITH VIEW FUNCTION
+      break;
+    }
+    if (board_complete(&var) == 0) {
+      puts("you won\n"); // REPLACE WITH VIEW FUNCTION
+      break;
+    }
+
     // display player board
     print_board(&var);
-    puts("1\n");
 
     // get player input
     char input[BUFFER];
-    puts("2\n");
     get_player_input(input);
-    puts("3\n");
-    printf("your move is %s", input);
+    printf("your move is %s\n", input);
 
     // TO DO - check whether this returns 0 or 1 if correct
     if (check_valid_input(input) != 0) {
@@ -51,23 +59,17 @@ int main(void) {
     }
     add_player_move(input, &var);
     if (check_fill(&var) != 0) {
-      printf("Spot is already filled. Make a new move");
+      printf("Spot is already filled. Make a new move\n");
       continue;
     }
     if (move_correct(&var, &consts) != 0) {
-      printf("WRONG MOVE SUCKER. try again.");
+      printf("WRONG MOVE SUCKER. try again.\n");
       var.errors++; // I don't think this is correct way to do this
+      printf("errors %zu/3\n", var.errors);
       continue;
     }
+    printf("correct move! good job. keep going.\n");
     update_board(&var);
-    if (var.errors == 3) {
-      puts("you lost"); // REPLACE WITH VIEW FUNCTION
-      break;
-    }
-    if (board_complete(&var) == 0) {
-      puts("you won"); // REPLACE WITH VIEW FUNCTION
-      break;
-    }
   }
 
   return EXIT_SUCCESS;
