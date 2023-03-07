@@ -17,6 +17,12 @@ typedef struct
  */
 void print_board_view(char board[9][9]);
 
+
+/**
+ * TODO ADD DOCUMENTATION
+ */
+void print_board(var_game_state *var);
+
 /**
  * Reset the player's current sudoku board in terminal.
  *

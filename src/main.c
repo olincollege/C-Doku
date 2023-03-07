@@ -34,17 +34,22 @@ int main(void) {
   // main loop; while board is not filled keep playing game
   while (1) {
     // display player board
-    print_board_view(var.player_board);
+    print_board(&var);
+    puts("1\n");
+
     // get player input
-    char *input[BUFFER];
-    get_player_input(*input);
-    printf("your move is %s", *input);
+    char input[BUFFER];
+    puts("2\n");
+    get_player_input(input);
+    puts("3\n");
+    printf("your move is %s", input);
+
     // TO DO - check whether this returns 0 or 1 if correct
-    if (check_valid_input(*input) != 0) {
+    if (check_valid_input(input) != 0) {
       printf("Please use correct format");
       continue;
     }
-    add_player_move(*input, &var);
+    add_player_move(input, &var);
     if (check_fill(&var) != 0) {
       printf("Spot is already filled. Make a new move");
       continue;

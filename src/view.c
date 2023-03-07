@@ -97,17 +97,17 @@ int print_result(var_game_state *var)
     // }
     return 0;
 }
-int main(void)
-{
-    var_game_state test, *var;
-    char board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
-    var = &test;
-    // printf("%s\n", var);
-    // printf("%c\n", var->player_board[0][5]);
-    strcpy(var->player_board, board);
-    print_board(var);
-    //     player_board[5][7] = '2';
-    //     player_board[1][3] = '9';
-    //     print_board_view(player_board);
-    // print_board_view(board);
-}
+// int main(void)
+// {
+//     var_game_state test, *var;
+//     char board[9][9] = {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}};
+//     var = &test;
+//     // printf("%s\n", var);
+//     // printf("%c\n", var->player_board[0][5]);
+//     strcpy(var->player_board, board);
+//     print_board(var);
+//     //     player_board[5][7] = '2';
+//     //     player_board[1][3] = '9';
+//     //     print_board_view(player_board);
+//     // print_board_view(board);
+// }
