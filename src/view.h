@@ -1,6 +1,11 @@
 #pragma once
 #include "model.h"
 
+typedef struct
+{
+    char spaces[BOARD_DIM][BOARD_DIM];
+} sudoku_board;
+
 /**
  * Print the player's current sudoku board in terminal.
  *
@@ -10,7 +15,7 @@
  *
  * @param board The existing char array of characters.
  */
-void print_board_view(char board[BOARD_DIM][BOARD_DIM]);
+void print_board_view(char board[9][9]);
 
 /**
  * Reset the player's current sudoku board in terminal.
@@ -21,7 +26,7 @@ void print_board_view(char board[BOARD_DIM][BOARD_DIM]);
  *
  * @param board The existing char array of characters.
  */
-void reset_board(char board[BOARD_DIM][BOARD_DIM]);
+void reset_board(var_game_state *var);
 /**
  * Print the result of the game.
  *
@@ -29,5 +34,9 @@ void reset_board(char board[BOARD_DIM][BOARD_DIM]);
  * functions prints out that the player lost. If the player is able to fill
  * the board before the error reaches 3, then the function prints that the
  * player won.
+ *
+ * @param var A pointer to the struct that contains the number of errors the
+ * player has made
+ * @return 1 if the player either wins or loses, and return 0 otherwise.
  */
-void print_result();
+int print_result(var_game_state *var);
