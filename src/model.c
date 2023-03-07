@@ -63,7 +63,7 @@ int check_player_board(var_game_state *var, const_game_state *consts)
 
 static int check_row(const_game_state *consts, int row)
 {
-  char check[BOARD_DIM] = "         ";
+  char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++)
   {
     if (strchr("123456789", consts->solution_board[row][i]) != NULL)
@@ -77,7 +77,7 @@ static int check_row(const_game_state *consts, int row)
 
 static int check_col(const_game_state *consts, int col)
 {
-  char check[BOARD_DIM] = "         ";
+  char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++)
   {
     if (strchr("123456789", consts->solution_board[i][col]) != NULL)
@@ -91,7 +91,7 @@ static int check_col(const_game_state *consts, int col)
 
 static int check_square(const_game_state *consts, int row, int col)
 {
-  char check[BOARD_DIM] = "         ";
+  char check[BOARD_DIM + 1] = "         ";
   for (int i = row; i < row + 3; i++)
   {
     for (int j = col; j < col + 3; j++)
@@ -137,7 +137,7 @@ void copy_string(var_game_state *var, char board[9][9])
   {
     for (int j = 0; j < BOARD_DIM; ++j)
     {
-      strncpy(var->player_board[i][j], &board[i][j], BOARD_DIM);
+      var->player_board[i][j] = (char) board[i][j];
     }
   }
 }

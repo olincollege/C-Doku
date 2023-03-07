@@ -138,4 +138,4 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  */
 int check_solution_board(const_game_state *consts);
 
-void copy_string(var_game_state *var, char board[9]);
+void copy_string(var_game_state *var, char board[9][9]);
