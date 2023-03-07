@@ -5,13 +5,14 @@
 #include <string.h>
 
 // Define useful constants needed in the program.
-enum {
-  /** Dimensions of sudoku board.*/
-  BOARD_DIM  = 9,
-  /** Number of errors allowed.*/
-  ERRORS = 3,
-  /** Max size of input*/
-  BUFFER = 6,
+enum
+{
+    /** Dimensions of sudoku board.*/
+    BOARD_DIM = 9,
+    /** Number of errors allowed.*/
+    ERRORS = 3,
+    /** Max size of input*/
+    BUFFER = 6,
 };
 
 // Define game state structs
@@ -24,7 +25,6 @@ typedef struct
     int col;
     char num;
 } move;
-
 
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's moves.
@@ -48,7 +48,6 @@ typedef struct
 // // hard coded boards
 extern const char board_start[BOARD_DIM][BOARD_DIM];
 extern const char board_solution[BOARD_DIM][BOARD_DIM];
-
 
 /**
  * Change the player's board according to the inputs given.
@@ -134,7 +133,9 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  * Should the solution board be correctly filled, the function returns the
  * number 0. Otherwise, it returns the number 1.
  *
- * @param consts A struct that contains the solution board. 
+ * @param consts A struct that contains the solution board.
  * @return An integer representing the validity of the solution board.
  */
 int check_solution_board(const_game_state *consts);
+
+void copy_string(var_game_state *var, char board[9][9]);

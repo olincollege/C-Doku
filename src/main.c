@@ -9,27 +9,27 @@ int main(void) {
   // BEYOND MVP: create empty player board & completed board
 
   // initialize premade board structs
-  // const_game_state consts;
-  // var_game_state var;
+  const_game_state consts;
+  consts.max_errors = 1;
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        consts.solution_board[i][j] = board_solution[i][j];
+    }
+  }
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        consts.init_board[i][j] = board_start[i][j];
+    }
+  }
 
-  // consts.max_errors = 1;
-  // memcpy(consts.solution_board, board_solution, sizeof(consts.solution_board));
-  // memcpy(consts.init_board, board_start, sizeof(consts.init_board));
+  var_game_state var;
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        var.player_board[i][j] = consts.init_board[i][j];
+    }
+  }
+  var.errors = 0;
 
-  // memcpy(var.player_board, consts.init_board, sizeof(var.player_board));
-  // var.errors = 0;
-
-  const_game_state consts = {
-    .solution_board = board_solution, 
-    .init_board = board_start, 
-    .level = 1, 
-    .max_errors = ERRORS
-    };
-  var_game_state var = {
-    .player_board = consts.init_board, 
-    .errors = 0, 
-    .p_move = {0, 0, 0},
-    };
 
   // main loop; while board is not filled keep playing game
   while (1) {
@@ -38,6 +38,7 @@ int main(void) {
     // get player input
     char *input[BUFFER];
     get_player_input(*input);
+    printf("your move is %s", *input);
     // TO DO - check whether this returns 0 or 1 if correct
     if (check_valid_input(*input) != 0) {
       printf("Please use correct format");
@@ -63,26 +64,6 @@ int main(void) {
       break;
     }
   }
-
-
-  //   while (!game_over(&state)) {
-  //   print_board(state.board);
-  //   printf("It is now %c's move.\n", state.current_turn);
-  //   board_space space;
-  //   if (get_user_input(&space) == 0 || move(&state, space) == 0) {
-  //     puts("Invalid move, please try again.");
-  //     continue;
-  //   }
-  // }
-  // if (player_win(&state)) {
-  //   printf("%c wins in %zu moves!\n", get_opposing_player(state.current_turn),
-  //          state.num_moves);
-  // } else {
-  //   // The only other way the game can end is if the board is full and nobody's
-  //   // won, which is a draw.
-  //   printf("It's a draw.\n");
-  // }
-
 
   return EXIT_SUCCESS;
 }
