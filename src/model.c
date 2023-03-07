@@ -85,7 +85,7 @@ static int check_col(const_game_state *consts, int col){
 }
 
 static int check_square(const_game_state *consts, int row, int col){
-    char check[BOARD_DIM] = "         ";
+    char check[BOARD_DIM+1] = "         ";
     for(int i = row; i < row + 3; i++){
         for(int j = col; j <col + 3; j++){
             if (strchr("123456789", consts->solution_board[i][j])!= NULL){
