@@ -77,18 +77,18 @@ Test(add_player_move, normal_input) {
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
   add_player_move(input, &test1);
-  cr_assert(test1.p_move.row == 1, "Wrong row input!");
-  cr_assert(test1.p_move.col == 2, "Wrong column input!");
-  cr_assert(test1.p_move.num == 3, "Wrong num input!");
+  cr_assert(test1.p_move.row == 0, "Wrong row input!");
+  cr_assert(test1.p_move.col == 1, "Wrong column input!");
+  cr_assert(test1.p_move.num == '3', "Wrong num input!");
 }
 
 Test(add_player_move, input_with_same_number) {
-  char *input = "1,1,1";
+  char * input = "1,1,1";
   var_game_state test1;
   test1.player_board[9][9] = board_start;
   test1.errors = 0;
   add_player_move(input, &test1);
-  cr_assert(test1.p_move.row == 1, "Wrong row input!");
-  cr_assert(test1.p_move.col == 1, "Wrong column input!");
-  cr_assert(test1.p_move.num == 1, "Wrong num input!");
+  cr_expect(test1.p_move.row == 0, "Wrong row input! Expected %i, got %i", 0, test1.p_move.row);
+  cr_expect(test1.p_move.col == 0, "Wrong column input! Expected %i, got %i", 0, test1.p_move.col);
+  cr_expect(test1.p_move.num == '1', "Wrong num input! Expected %c, got %c", '1', test1.p_move.num);
 }
