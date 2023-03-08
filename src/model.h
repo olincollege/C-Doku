@@ -48,6 +48,9 @@ typedef struct
 // // hard coded boards
 extern const char board_start[BOARD_DIM][BOARD_DIM];
 extern const char board_solution[BOARD_DIM][BOARD_DIM];
+extern const char board_start_easy_1[BOARD_DIM][BOARD_DIM];
+extern const char board_solution_easy_1[BOARD_DIM][BOARD_DIM];
+
 
 /**
  * Change the player's board according to the inputs given.
@@ -137,5 +140,3 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  * @return An integer representing the validity of the solution board.
  */
 int check_solution_board(const_game_state *consts);
-
-void copy_string(var_game_state *var, char board[9][9]);
