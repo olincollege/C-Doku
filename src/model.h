@@ -137,5 +137,3 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  * @return An integer representing the validity of the solution board.
  */
 int check_solution_board(const_game_state *consts);
-
-void copy_string(var_game_state *var, char board[9][9]);

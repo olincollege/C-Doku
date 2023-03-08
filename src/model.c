@@ -137,14 +137,3 @@ int check_solution_board(const_game_state *consts)
   }
   return 0;
 }
-
-void copy_string(var_game_state *var, char board[9][9])
-{
-  for (int i = 0; i < BOARD_DIM; ++i)
-  {
-    for (int j = 0; j < BOARD_DIM; ++j)
-    {
-      var->player_board[i][j] = (char) board[i][j];
-    }
-  }
-}
