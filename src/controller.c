@@ -21,6 +21,13 @@
  */
 int convert_move(const char input) { return (input - '0') - 1; }
 
+static void flush_input_line(void) {
+  char null_buffer[BUFFER];
+  do {
+    (void)fgets(null_buffer, sizeof(null_buffer), stdin);
+  } while (strchr(null_buffer, '\n') == NULL);
+}
+
 int check_valid_input(char *input) {
   const char *valid_nums = "12345689";
 
@@ -40,16 +47,21 @@ int check_valid_input(char *input) {
   return 0;
 }
 
-void get_player_input(
-    char *input) { // is required for player to follow the correct
-                   // format when typing, otherwise it will be rejected
+int get_player_input(char* input) { // is required for player to follow the correct
+  char temp[6];
   printf("Insert next move in row,col,num format: ");
-  (void)fgets(input, sizeof(input),
-              stdin); // scans player input into char pointer
+  (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
+  if (strchr(temp, '\n') == NULL) {
+    flush_input_line();
+    return 1;
+  }
+  (void)strncpy(input, temp, sizeof(temp));
+  return 0;
 }
 
 int add_player_move(char *input, var_game_state *var) {
-  for (size_t i = 0; i < strlen(input); i++) { // if not a comma, write into struct
+  for (size_t i = 0; i < strlen(input);
+       i++) { // if not a comma, write into struct
     if (input[i] != ',') {
       switch (i) {
       case 0:
@@ -59,7 +71,7 @@ int add_player_move(char *input, var_game_state *var) {
         var->p_move.col = convert_move(input[i]);
         break;
       case 4:
-         var->p_move.num = input[i];
+        var->p_move.num = input[i];
         break;
       default:
         return 1;
