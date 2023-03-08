@@ -48,6 +48,9 @@ typedef struct
 // // hard coded boards
 extern const char board_start[BOARD_DIM][BOARD_DIM];
 extern const char board_solution[BOARD_DIM][BOARD_DIM];
+extern const char board_start_easy_1[BOARD_DIM][BOARD_DIM];
+extern const char board_solution_easy_1[BOARD_DIM][BOARD_DIM];
+
 
 /**
  * Change the player's board according to the inputs given.

@@ -1,6 +1,7 @@
 #include "model.h"
 
 const char board_start[BOARD_DIM][BOARD_DIM] = {
+
   " 9 28   6", 
   "62    1 8", 
   "  7    3 ",
@@ -13,6 +14,30 @@ const char board_start[BOARD_DIM][BOARD_DIM] = {
 const char board_solution[BOARD_DIM][BOARD_DIM] = {"391285746", "625437198", "487916235",
                                                    "863159427", "514872369", "279643581",
                                                    "138764952", "946521873", "752398614"};
+
+const char board_start_easy_1[BOARD_DIM][BOARD_DIM] = {
+  
+  "   26 7 1", 
+  "68  7  9 ", 
+  "19   45  ",
+  "82 1   4 ", 
+  "  46 29  ", 
+  " 5   3 28",
+  "  93   74", 
+  " 4  5  36", 
+  "7 3 18   "};
+const char board_solution_easy_1[BOARD_DIM][BOARD_DIM] = {
+  "435269781",
+  "682571493",
+  "197834562",
+  "826195347",
+  "374682915",
+  "951743628", 
+  "519326874", 
+  "248957136",
+  "763418259"
+  };
+
 
 void update_board(var_game_state *var)
 {
