@@ -148,9 +148,12 @@ Test(print_result, game_loss, .init = cr_redirect_stdout)
 // and the board is complete
 Test(print_result, game_win, .init = cr_redirect_stdout)
 {
-    var_game_state var;
+    var_game_state var = {.player_board = {
+                              "391285746", "625437198", "487916235",
+                              "863159427", "514872369", "279643581",
+                              "138764952", "946521873", "752398614"}};
     var.errors = 2;
-    board_complete(&var) == 0;
+
     print_result(&var);
     (void)fflush(stdout);
     (void)fclose(stdout);
@@ -163,9 +166,17 @@ Test(print_result, game_win, .init = cr_redirect_stdout)
 // and the board is incomplete
 Test(print_result, game_continue, .init = cr_redirect_stdout)
 {
-    var_game_state var;
+    var_game_state var = {.player_board = {
+                              " 9 28   6",
+                              "62    1 8",
+                              "  7    3 ",
+                              "8 31  4  ",
+                              "    7 36 ",
+                              " 79      ",
+                              "1    49 2",
+                              "94    87 ",
+                              "     8   "}};
     var.errors = 1;
-    board_complete(&var) == 0;
     print_result(&var);
     (void)fflush(stdout);
     (void)fclose(stdout);
