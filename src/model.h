@@ -47,8 +47,19 @@ typedef struct
 // Hard coded boards
 extern const char board_start[BOARD_DIM][BOARD_DIM];
 extern const char board_solution[BOARD_DIM][BOARD_DIM];
-extern const char board_start_easy_1[BOARD_DIM][BOARD_DIM];
-extern const char board_solution_easy_1[BOARD_DIM][BOARD_DIM];
+extern const char init_easy_1[BOARD_DIM][BOARD_DIM];
+extern const char solution_easy_1[BOARD_DIM][BOARD_DIM];
+extern const char init_easy_2[BOARD_DIM][BOARD_DIM];
+extern const char solution_easy_2[BOARD_DIM][BOARD_DIM];
+extern const char init_medium_1[BOARD_DIM][BOARD_DIM];
+extern const char solution_medium_1[BOARD_DIM][BOARD_DIM];
+extern const char init_medium_2[BOARD_DIM][BOARD_DIM];
+extern const char solution_medium_2[BOARD_DIM][BOARD_DIM];
+extern const char init_hard_1[BOARD_DIM][BOARD_DIM];
+extern const char solution_hard_1[BOARD_DIM][BOARD_DIM];
+extern const char init_hard_2[BOARD_DIM][BOARD_DIM];
+extern const char solution_hard_2[BOARD_DIM][BOARD_DIM];
+
 
 
 /**
