@@ -4,7 +4,14 @@
 #include <string.h>
 
 /**
+ * Read the remaining inputs in input line and does nothing with it.
  * 
+ * In cases where the input is too long for stdin to read (or other varying
+ * situations where input lines would fail to get saved in the destination
+ * properly), the input line needs to be "flushed" and the remaining parts
+ * of the input must be discarded for future reads. This function reads the
+ * remainders into a local variable that does not get used, which essentially
+ * gets rid of it.
 */
 static void flush_input_line(void) {
   char null_buffer[BUFFER];
@@ -33,7 +40,7 @@ static int convert_move(const char input) { return (input - '0') - 1; }
 int check_valid_input(char *input) {
   const char *valid_nums = "12345689";
   int size = strlen(input);
-  if (size != BUFFER-2) {                    // checking size is 6
+  if (size != BUFFER-2) {                    // checking size of string is 5
     return 1;
   }
   for (size_t i = 0; i < size - 1;

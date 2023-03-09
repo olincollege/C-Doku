@@ -12,7 +12,7 @@ enum
     /** Number of errors allowed.*/
     ERRORS = 3,
     /** Maximum size of input.*/
-    BUFFER = 6,
+    BUFFER = 7,
 };
 
 // Define game state structs.
