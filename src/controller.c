@@ -34,8 +34,9 @@ static void flush_input_line(void) {
  *
  * @param input A pointer to a character representing the character to be
  * converted.
+ * @return An integer version of the character integer it is passed.
  */
-static int convert_move(const char input) { return (input - '0') - 1; }
+static int convert__to_int(const char input) { return (input - '0') - 1; }
 
 int check_valid_input(char *input) {
   const char *valid_nums = "12345689";
@@ -61,7 +62,7 @@ int check_valid_input(char *input) {
 
 int get_player_input(char* input) { // is required for player to follow the correct
   char temp[BUFFER];
-  printf("Insert next move in row,col,num format: ");
+  printf("Insert next move (format should be row,col,value ): ");
   (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
   if (strchr(temp, '\n') == NULL) {
     flush_input_line();
@@ -77,10 +78,10 @@ int add_player_move(char *input, var_game_state *var) {
     if (input[i] != ',') {
       switch (i) {
       case 0:
-        var->p_move.row = convert_move(input[i]);
+        var->p_move.row = convert_to_int(input[i]);
         break;
       case 2:
-        var->p_move.col = convert_move(input[i]);
+        var->p_move.col = convert_to_int(input[i]);
         break;
       case 4:
         var->p_move.num = input[i];
