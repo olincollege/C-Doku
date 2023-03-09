@@ -4,7 +4,17 @@
 #include <string.h>
 
 /**
- * Converts a given character into the index needed to edit the player board.
+ * 
+*/
+static void flush_input_line(void) {
+  char null_buffer[BUFFER];
+  do {
+    (void)fgets(null_buffer, sizeof(null_buffer), stdin);
+  } while (strchr(null_buffer, '\n') == NULL);
+}
+
+/**
+ * Convert a given character into the index needed to edit the player board.
  *
  * This function converts a given character into an integer (assuming that
  * all inputs are numbers) and subtracts 1 from it. When a player inputs
@@ -20,17 +30,13 @@
  */
 static int convert_move(const char input) { return (input - '0') - 1; }
 
-static void flush_input_line(void) {
-  char null_buffer[BUFFER];
-  do {
-    (void)fgets(null_buffer, sizeof(null_buffer), stdin);
-  } while (strchr(null_buffer, '\n') == NULL);
-}
-
 int check_valid_input(char *input) {
   const char *valid_nums = "12345689";
-
-  for (size_t i = 0; i < strlen(input) - 1;
+  int size = strlen(input);
+  if (size != BUFFER-2) {                    // checking size is 6
+    return 1;
+  }
+  for (size_t i = 0; i < size - 1;
        i++) {         // looping through player's input string
     if (i % 2 == 0) { // if its even
       if (strchr(valid_nums, input[i]) ==
@@ -47,10 +53,10 @@ int check_valid_input(char *input) {
 }
 
 int get_player_input(char* input) { // is required for player to follow the correct
-  char temp[7];
+  char temp[BUFFER];
   printf("Insert next move in row,col,num format: ");
   (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
-  if (strchr(temp, '\0') == NULL) {
+  if (strchr(temp, '\n') == NULL) {
     flush_input_line();
     return 1;
   }

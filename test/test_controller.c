@@ -43,12 +43,12 @@ Test(check_valid_input, all_nums) {
 }
 
 Test(get_player_input, correct_input) {
-  char *input[BUFFER];
+  char input[BUFFER];
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1,2,3\n");
+  (void)fprintf(stdin_file, "1,2,3");
   (void)fclose(stdin_file);
-  get_player_input(input);
-  cr_assert(strcmp(input,"1,2,3")==0, "Input incorrectly. Expected %s, got %s", "1,2,3", input);
+  int result = get_player_input(input);
+  cr_assert(strcmp(input,"1,2,3")==0, "Input incorrectly");
 }
 
 
@@ -63,11 +63,11 @@ Test(get_player_input, correct_input) {
 
 
 Test(get_player_input, same_input) {
-  char *input;
+  char input[BUFFER];
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1,1,1\n");
+  (void)fprintf(stdin_file, "1,1,1");
   (void)fclose(stdin_file);
-  get_player_input(input);
+  int result = get_player_input(input);
   cr_assert(strcmp(input,"1,1,1")==0, "Input incorrectly");
 }
 
