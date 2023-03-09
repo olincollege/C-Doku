@@ -150,7 +150,7 @@ Test(print_result, game_win, .init = cr_redirect_stdout)
 {
     var_game_state var;
     var.errors = 2;
-    board_complete(&var) == 0;
+    //board_complete(&var) == 0;
     print_result(&var);
     (void)fflush(stdout);
     (void)fclose(stdout);
@@ -165,7 +165,7 @@ Test(print_result, game_continue, .init = cr_redirect_stdout)
 {
     var_game_state var;
     var.errors = 1;
-    board_complete(&var) == 0;
+    //board_complete(&var) == 0;
     print_result(&var);
     (void)fflush(stdout);
     (void)fclose(stdout);
