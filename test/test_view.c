@@ -153,6 +153,7 @@ Test(print_result, game_win, .init = cr_redirect_stdout)
                               "863159427", "514872369", "279643581",
                               "138764952", "946521873", "752398614"}};
     var.errors = 2;
+
     print_result(&var);
     (void)fflush(stdout);
     (void)fclose(stdout);
