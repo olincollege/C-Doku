@@ -1,3 +1,0 @@
-test_view 8 0.0278211
-test_model 0 0
----

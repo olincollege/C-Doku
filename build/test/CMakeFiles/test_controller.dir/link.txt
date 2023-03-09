@@ -1,1 +1,0 @@
-/usr/bin/gcc -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -Wno-conversion -g CMakeFiles/test_controller.dir/test_controller.c.o -o test_controller  ../src/libcontroller.a ../src/libmodel.a /usr/lib/x86_64-linux-gnu/libcriterion.so 

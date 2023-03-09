@@ -1,1 +1,0 @@
-/usr/bin/gcc -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -g CMakeFiles/run_sudoku.dir/main.c.o -o run_sudoku  libmodel.a libview.a libcontroller.a 
