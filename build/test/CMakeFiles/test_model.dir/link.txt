@@ -1,0 +1,1 @@
+/usr/bin/gcc -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -Wno-conversion -g CMakeFiles/test_model.dir/test_model.c.o -o test_model  ../src/libmodel.a /usr/lib/x86_64-linux-gnu/libcriterion.so 

@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/allysonhur/C-Doku/build/src",
+  "command": "/usr/bin/gcc   -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -g -o CMakeFiles/model.dir/model.c.o -c /home/allysonhur/C-Doku/src/model.c",
+  "file": "/home/allysonhur/C-Doku/src/model.c"
+},
+{
+  "directory": "/home/allysonhur/C-Doku/build/src",
+  "command": "/usr/bin/gcc   -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -g -o CMakeFiles/view.dir/view.c.o -c /home/allysonhur/C-Doku/src/view.c",
+  "file": "/home/allysonhur/C-Doku/src/view.c"
+},
+{
+  "directory": "/home/allysonhur/C-Doku/build/src",
+  "command": "/usr/bin/gcc   -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -g -o CMakeFiles/controller.dir/controller.c.o -c /home/allysonhur/C-Doku/src/controller.c",
+  "file": "/home/allysonhur/C-Doku/src/controller.c"
+},
+{
+  "directory": "/home/allysonhur/C-Doku/build/src",
+  "command": "/usr/bin/gcc   -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -g -o CMakeFiles/run_sudoku.dir/main.c.o -c /home/allysonhur/C-Doku/src/main.c",
+  "file": "/home/allysonhur/C-Doku/src/main.c"
+},
+{
+  "directory": "/home/allysonhur/C-Doku/build/test",
+  "command": "/usr/bin/gcc   -Wall -Wextra -pedantic -Wshadow -Wconversion -Wunreachable-code -g -Wno-conversion -g -o CMakeFiles/test_view.dir/test_view.c.o -c /home/allysonhur/C-Doku/test/test_view.c",
+  "file": "/home/allysonhur/C-Doku/test/test_view.c"
+}
+]
