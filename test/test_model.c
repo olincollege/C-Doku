@@ -161,6 +161,90 @@ Test(check_solution_board, correct_1) {
   const_game_state answer = make_const_complete_board();
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
+
+// check_solution_board easy 1
+Test(check_solution_board, correct_easy_1) {
+  const_game_state answer = {.solution_board = {
+  "875921346", 
+  "361754892", 
+  "249863715",
+  "584697123", 
+  "713248659", 
+  "926135487",
+  "697412538", 
+  "158379264", 
+  "432586971"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+// check_solution_board easy 2
+Test(check_solution_board, correct_easy_2) {
+  const_game_state answer = {.solution_board = {
+  "264859317",
+  "981734652",
+  "753621849",
+  "135297486",
+  "892546731",
+  "476318925", 
+  "318975264", 
+  "649182573",
+  "527463198"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+// check_solution_board medium 1
+Test(check_solution_board, correct_medium_1) {
+  const_game_state answer = {.solution_board = {"517264893",
+  "926835741",
+  "483971562",
+  "135496287",
+  "792518436",
+  "864327915", 
+  "378642159", 
+  "259183674",
+  "641759328"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+
+// check_solution_board medium 2
+Test(check_solution_board, correct_medium_2) {
+  const_game_state answer = {.solution_board = {"234158697",
+  "956473182",
+  "178269435",
+  "643925718",
+  "815746329",
+  "729381564", 
+  "592637841", 
+  "381594276",
+  "467812953"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+// check_solution_board hard 1
+Test(check_solution_board, correct_hard_1) {
+  const_game_state answer = {.solution_board = {"136524798",
+  "895367124",
+  "724981356",
+  "583649271",
+  "261873945",
+  "479152683", 
+  "642718539", 
+  "957436812",
+  "318295467"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+
+// check_solution_board hard 2
+Test(check_solution_board, correct_hard_2) {
+  const_game_state answer = {.solution_board = {"491675238",
+  "273981456",
+  "856432917",
+  "712856349",
+  "564793182",
+  "938124675", 
+  "145267893", 
+  "687349521",
+  "329518764"}};
+  cr_assert(eq(int, check_solution_board(&answer), 0));
+}
+
 // incorrect_board
 Test(check_solution_board, incorrect_1) {
   const_game_state answer = make_const_complete_board();
