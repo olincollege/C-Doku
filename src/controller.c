@@ -50,7 +50,7 @@ int get_player_input(char* input) { // is required for player to follow the corr
   char temp[6];
   printf("Insert next move in row,col,num format: ");
   (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
-  if (strchr(temp, '\n') == NULL) {
+  if (strchr(temp, '\0') == NULL) {
     flush_input_line();
     return 1;
   }
