@@ -48,6 +48,7 @@ Test(get_player_input, correct_input) {
   (void)fprintf(stdin_file, "1,2,3");
   (void)fclose(stdin_file);
   int result = get_player_input(input);
+  cr_assert(eq(int, result, 0));
   cr_assert(strcmp(input, "1,2,3") == 0, "Input incorrectly");
 }
 
@@ -68,7 +69,9 @@ Test(get_player_input, same_input) {
   (void)fprintf(stdin_file, "1,1,1");
   (void)fclose(stdin_file);
   int result = get_player_input(input);
+  cr_assert(eq(int, result, 0));
   cr_assert(strcmp(input, "1,1,1") == 0, "Input incorrectly");
+  
 }
 
 Test(add_player_move, normal_input) {
