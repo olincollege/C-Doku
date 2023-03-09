@@ -11,14 +11,13 @@ enum
     BOARD_DIM = 9,
     /** Number of errors allowed.*/
     ERRORS = 3,
-    /** Max size of input*/
+    /** Maximum size of input.*/
     BUFFER = 6,
 };
 
-// Define game state structs
+// Define game state structs.
 
-// The player's inputted move represented by the row and column of the move and
-// the number itself.
+// The player's inputted move represented by the row, column, and number.
 typedef struct
 {
     int row;
@@ -27,7 +26,7 @@ typedef struct
 } move;
 
 // The parts of the sudoku game that change, including the player's board, the
-// number of errors the player has made, and the player's moves.
+// number of errors the player has made, and the player's latest move.
 typedef struct
 {
     char player_board[BOARD_DIM][BOARD_DIM];
@@ -36,7 +35,7 @@ typedef struct
 } var_game_state;
 
 // The parts of the sudoku game that do not change, including the initial board,
-// the solution board, the level, and the maximum number of levels.
+// the solution board, the level, and the maximum number of errors allowed.
 typedef struct
 {
     char solution_board[BOARD_DIM][BOARD_DIM];
@@ -53,31 +52,34 @@ extern const char board_solution_easy_1[BOARD_DIM][BOARD_DIM];
 
 
 /**
- * Change the player's board according to the inputs given.
+ * Updates the player sudoku board with the player's latest move.
  *
- * Given the variable game state struct, this function will replace the space in
- * the player board provided by the user with the number provided by the user.
+ * Given the variable game state struct, this function will update the player
+ * board with the latest move made by the player. The player's move is
+ * represented by a struct containing the row, column, and number selected by
+ * the player.
  *
- * @param var A struct that contains the variables in the game state.
+ * @param var A pointer to the variable game state containing the player board and the player's move.
  */
 void update_board(var_game_state *var);
 
 /**
- * Check whether a spot is already filled.
+ * Checks whether a spot in the player board is already filled.
  *
  * Given the variable game state struct, this function checks whether the spot
- * the user wants to input a number into is already filled.
+ * at the row and column specified in the latest move made by the player is
+ * already filled with a number in the player board.
  * If the spot is empty, the function returns 0. Otherwise, the
  * function returns 1.
  *
- * @param var A struct that contains the variables in the game state.
+ * @param var A pointer to the variable game state
  * @return An integer representing whether the spot is filled (0 if
  * empty, 1 if filled).
  */
 int check_fill(var_game_state *var);
 
 /**
- * Check whether the move is correct.
+ * Checks whether the latest move made by the player is correct.
  *
  * Given the variable game state struct and the constant game state struct, this
  * function checks whether the player's move matches the solution board at that

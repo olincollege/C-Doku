@@ -4,12 +4,11 @@
 #include <string.h>
 
 /**
- * Convert a given character into the index needed to edit array.
+ * Converts a given character into the index needed to edit the player board.
  *
- * Given a character, this function converts it into an integer (assuming that
- * all inputs are numbers) and subtracts 1 from it. The intention behind this
- * function is purely for the functionality of the game. When a player inputs
- * their desired move, the index they provide for row and column will be numbers
+ * This function converts a given character into an integer (assuming that
+ * all inputs are numbers) and subtracts 1 from it. When a player inputs
+ * their desired move, the index they provide for row and column is a number
  * from 1-9. However, when indexing into the game board array, we need a number
  * from 0-8, hence the subtraction. Additionally, the player input will be taken
  * in as a string since the input is coming from a keyboard. However, we need
@@ -19,7 +18,7 @@
  * @param input A pointer to a character representing the character to be
  * converted.
  */
-int convert_move(const char input) { return (input - '0') - 1; }
+static int convert_move(const char input) { return (input - '0') - 1; }
 
 static void flush_input_line(void) {
   char null_buffer[BUFFER];

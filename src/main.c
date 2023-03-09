@@ -6,9 +6,8 @@
 #include <string.h>
 
 int main(void) {
-  // BEYOND MVP: create empty player board & completed board
 
-  // initialize premade board structs
+  // Initialize game state and game info structs with pre-made boards
   const_game_state consts;
   consts.max_errors = 1;
   for (size_t i = 0; i < BOARD_DIM; i++) {
@@ -31,51 +30,48 @@ int main(void) {
   var.errors = 0;
 
 
-  // main loop; while board is not filled keep playing game
+  // Main loop keeps running while end condition has not been reached
   while (1) {
 
-    // check win/lose condition
+    // Check win/lose condition
     if (print_result(&var)==1) {
       break;
     }
 
-
-    // if (var.errors > 2) {
-    //   puts("you lost\n"); // REPLACE WITH VIEW FUNCTION
-    //   break;
-    // }
-    // if (board_complete(&var) == 0) {
-    //   puts("you won\n"); // REPLACE WITH VIEW FUNCTION
-    //   break;
-    // }
-
-    // display player board
+    // Display the player board
     print_board(&var);
 
-    // get player input
+    // Get the player's input
     char input[BUFFER];
     get_player_input(input);
-    printf("Your move is %s\n", input);
+    printf("Your move is %s.\n", input);
 
-    // TO DO - check whether this returns 0 or 1 if correct
+    // Check whether the player's input is in a valid format
     if (check_valid_input(input) != 0) {
-      printf("Please use correct format");
+      printf("Please use correct format.");
       continue;
     }
+
+    // If the player's input is in a valid format, add it to the move struct
     add_player_move(input, &var);
+
+    // check whether the spot the player wants to fill is alread filled
     if (check_fill(&var) != 0) {
-      printf("Spot is already filled. Make a new move\n");
+      printf("This spot is already filled. Try again.\n");
       continue;
     }
+
+    // Check whether the player's move is correct
     if (move_correct(&var, &consts) != 0) {
       if  (var.errors < 2) {
         printf("WRONG MOVE. Try again.\n");
       }
-      var.errors++; // I don't think this is correct way to do this
-      printf("Errors %zu/3\n", var.errors);
+      var.errors++;
+      printf("Errors: %zu/3\n", var.errors);
       continue;
     }
-    printf("Correct move! Good job. Keep going.\n");
+
+    printf("Correct move! Keep going :)\n");
     update_board(&var);
   }
 
