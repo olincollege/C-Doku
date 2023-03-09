@@ -66,7 +66,7 @@ const char solution_easy_2[BOARD_DIM][BOARD_DIM] = {
   "527463198"
   };
 
-  const char init_medium_1[BOARD_DIM][BOARD_DIM] = {
+const char init_medium_1[BOARD_DIM][BOARD_DIM] = {
     "5 72   9 ",
     "  6 3 7 1",
     "4      6 ",
@@ -283,4 +283,41 @@ int check_solution_board(const_game_state *consts)
     }
   }
   return 0;
+}
+
+void setup_game(const_game_state *consts, var_game_state *var) {
+  const char (*solution)[BOARD_DIM][BOARD_DIM];
+  const char (*initial)[BOARD_DIM][BOARD_DIM];
+  switch (consts->level){
+    case 1:
+      solution = &solution_easy_1;
+      initial = &init_easy_1;
+      break;
+    case 2:
+      solution = &solution_medium_1;
+      initial = &init_medium_1;
+      break;
+    case 3:
+      solution = &solution_hard_1;
+      initial = &init_hard_1;
+      break;
+    default:
+      puts("uh, shwoopsies\n"); // DELETE AFTER DEBUGGING
+  }
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        consts->solution_board[i][j] = (*solution)[i][j];
+    }
+  }
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        consts->init_board[i][j] = (*initial)[i][j];
+    }
+  }
+  for (size_t i = 0; i < BOARD_DIM; i++) {
+    for (size_t j = 0; j < BOARD_DIM; j++) {
+        var->player_board[i][j] = consts->init_board[i][j];
+    }
+  }
+  var->errors = 0;
 }

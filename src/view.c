@@ -38,7 +38,7 @@ void print_board(var_game_state *var)
 
 int print_result(var_game_state *var)
 {
-    if (var->errors == 3)
+    if (var->errors == ERRORS)
     {
         printf("YOU LOSE :(\n");
         return 1;

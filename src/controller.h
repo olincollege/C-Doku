@@ -57,3 +57,20 @@ int get_player_input(char *input);
  * @return An integer 0 if the parsing was successful and 1 otherwise.
  */
 int add_player_move(char *input, var_game_state *var);
+
+/**
+ * Ask player which level they want to play, and returns the level.
+ * 
+ * This function prints out a statement asking the player which level they want
+ * to play easy (1), medium (2), or hard (3). The getchar() function is called
+ * get the single character input from the player's keyboard. Then the function
+ * edits the level field of the constant game state to reflect the level that
+ * the player chose. If the player inputted a valid level, the level field is
+ * updated and the function returns 0. Otherwise, it returns 1, showing that the
+ * level was not valid.
+ * 
+ * @param consts A pointer to the constant game state struct.
+ * @return An integer 0 if the level was successfully chosen, and 1 otherwise.
+ * 
+*/
+int get_player_level(const_game_state *consts);

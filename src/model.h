@@ -35,13 +35,12 @@ typedef struct
 } var_game_state;
 
 // The parts of the sudoku game that do not change, including the initial board,
-// the solution board, the level, and the maximum number of errors allowed.
+// the solution board, and the level.
 typedef struct
 {
     char solution_board[BOARD_DIM][BOARD_DIM];
     char init_board[BOARD_DIM][BOARD_DIM];
     size_t level;
-    size_t max_errors;
 } const_game_state;
 
 // Hard coded boards
@@ -146,3 +145,9 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  * @return An integer representing whether the solution board is correct.
  */
 int check_solution_board(const_game_state *consts);
+
+
+/**
+ * TO DO
+*/
+void setup_game(const_game_state *consts, var_game_state *var);
