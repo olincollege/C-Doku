@@ -44,12 +44,9 @@ int main(void) {
     // Get the player's input
     char input[BUFFER];
     int correct_size = get_player_input(input);
-    printf("Your move is %s\n", input);
 
     // Check whether the player's input is in a valid format
     if (correct_size !=0 || check_valid_input(input) != 0) {
-      printf("correct size: %d\n", correct_size);
-      printf("check valid: %d\n", check_valid_input(input));
       printf("Please use correct format.\n");
       continue;
     }
