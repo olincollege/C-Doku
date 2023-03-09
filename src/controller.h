@@ -21,7 +21,7 @@
  * be of the wrong type/size, the function returns 1. However if the input was correct,
  * the function returns 0.
  *
- * @param input An array of characters representing the original string to verify.
+ * @param input A string representing the original string to verify.
  * @return An integer indicating the input is correct (0) or not (1).
  */
 int check_valid_input(char *input);

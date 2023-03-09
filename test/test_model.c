@@ -24,16 +24,9 @@ var_game_state make_complete_board(void) {
 }
 const_game_state make_const_complete_board(void) {
   const_game_state solution_board = {
-      .solution_board = {
-      "391285746", 
-      "625437198", 
-      "487916235", 
-      "863159427",        
-      "514872369", 
-      "279643581", 
-      "138764952", 
-      "946521873",
-      "752398614"}};
+      .solution_board = {"391285746", "625437198", "487916235", "863159427",
+                         "514872369", "279643581", "138764952", "946521873",
+                         "752398614"}};
   return solution_board;
 }
 
@@ -175,26 +168,17 @@ Test(check_solution_board, incorrect_1) {
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
 Test(check_solution_board, incorrect_characters) {
-  const_game_state answer = {.solution_board = {"abcdefghi", "abcdefghi", "abcdefghi",
-                                          "abcdefghi", "abcdefghi", "abcdefghi",
-                                          "abcdefghi", "abcdefghi",
-                                          "abcdefghi"},
-                        };
+  const_game_state answer = {
+      .solution_board = {"abcdefghi", "abcdefghi", "abcdefghi", "abcdefghi",
+                         "abcdefghi", "abcdefghi", "abcdefghi", "abcdefghi",
+                         "abcdefghi"},
+  };
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
 Test(check_solution_board, incorrect_range) {
   const_game_state answer = {
-      .solution_board = {
-      "390285746", 
-      "625437098", 
-      "487906235", 
-      "863059427",        
-      "504872369", 
-      "279643581", 
-      "038764952", 
-      "946520873",
-      "752398604"}};
+      .solution_board = {"390285746", "625437098", "487906235", "863059427",
+                         "504872369", "279643581", "038764952", "946520873",
+                         "752398604"}};
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
-    
-

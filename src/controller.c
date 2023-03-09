@@ -39,20 +39,23 @@ static void flush_input_line(void) {
 static int convert__to_int(const char input) { return (input - '0') - 1; }
 
 int check_valid_input(char *input) {
-  const char *valid_nums = "12345689";
+  const char *valid_nums = "123456789";
   int size = strlen(input);
-  if (size != BUFFER-2) {                    // checking size of string is 5
+  if (size != BUFFER-1) {                    // checking size of string is 5
+    printf("wrong size: %d\n", size);
     return 1;
   }
-  for (size_t i = 0; i < size - 1;
+  for (size_t i = 0; i < (size_t)size - 1;
        i++) {         // looping through player's input string
     if (i % 2 == 0) { // if its even
       if (strchr(valid_nums, input[i]) ==
           NULL) { // if integers are actually correct
+        printf("not num in spot, %c", input[i]);
         return 1;
       }
     } else {
       if (input[i] != ',') { // if the commas are correct
+        printf("not comma in spot");
         return 1;
       }
     }
