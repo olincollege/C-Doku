@@ -148,6 +148,15 @@ int check_solution_board(const_game_state *consts);
 
 
 /**
- * TO DO
+ * Set up the game state and game information structs based on the chosen level.
+ * 
+ * This function chooses a sudoku board based on the level the player chose,
+ * (easy, medium, or hard). Then it fills in the board fields of the
+ * const_game_state and var_game_state structs with the intial version of the
+ * chosen sudoku board (meaning the version with values missing that will be
+ * presented to the player) and the solved version of the chosen sudoku board.
+ * 
+ * @param var A pointer to the variable game state struct.
+ * @param consts A pointer to the constant game state struct.
 */
 void setup_game(const_game_state *consts, var_game_state *var);

@@ -5,26 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void) {  
-  // consts.max_errors = 1;
-  // for (size_t i = 0; i < BOARD_DIM; i++) {
-  //   for (size_t j = 0; j < BOARD_DIM; j++) {
-  //       consts.solution_board[i][j] = board_solution[i][j];
-  //   }
-  // }
-  // for (size_t i = 0; i < BOARD_DIM; i++) {
-  //   for (size_t j = 0; j < BOARD_DIM; j++) {
-  //       consts.init_board[i][j] = board_start[i][j];
-  //   }
-  // }
-
-  // for (size_t i = 0; i < BOARD_DIM; i++) {
-  //   for (size_t j = 0; j < BOARD_DIM; j++) {
-  //       var.player_board[i][j] = consts.init_board[i][j];
-  //   }
-  // }
-  // var.errors = 0;
-
+int main(void) {
   // Initialize game state and game info structs
   const_game_state consts;
   var_game_state var;

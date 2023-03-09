@@ -286,8 +286,8 @@ int check_solution_board(const_game_state *consts)
 }
 
 void setup_game(const_game_state *consts, var_game_state *var) {
-  const char (*solution)[BOARD_DIM][BOARD_DIM];
-  const char (*initial)[BOARD_DIM][BOARD_DIM];
+  const char (*solution)[BOARD_DIM][BOARD_DIM] = &solution_easy_1;
+  const char (*initial)[BOARD_DIM][BOARD_DIM] = &init_easy_1;
   switch (consts->level){
     case 1:
       solution = &solution_easy_1;

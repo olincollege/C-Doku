@@ -40,7 +40,7 @@ static int convert_to_int(const char input) { return (input - '0') - 1; }
 
 int check_valid_input(char *input) {
   const char *valid_nums = "123456789";
-  int size = strlen(input);
+  int size = (int) strlen(input);
   if (size != BUFFER-1) {                    // checking size of string is 5
     printf("Wrong size input: %d \n", size); // DELETE AFTER DEBUGGING
     return 1;
@@ -71,7 +71,7 @@ int get_player_input(char* input) { // is required for player to follow the corr
     flush_input_line();
     return 1;
   }
-  (void)strncpy(input, temp, sizeof(temp));
+  (void)strncpy(input, temp, sizeof(temp)); // NOLINT TODO be more specific
   return 0;
 }
 
@@ -98,9 +98,8 @@ int add_player_move(char *input, var_game_state *var) {
 }
 
 int get_player_level(const_game_state *consts) {
-  char temp;
   printf("Select your level -> Easy (Enter 1), Medium (Enter 2), Hard (Enter 3): ");
-  temp = getchar();
+  char temp = (char) getchar();
   flush_input_line();
   if (temp == '1') {
     consts->level = 1;
