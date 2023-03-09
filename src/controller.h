@@ -7,7 +7,7 @@
 #include "model.h"
 
 /**
- * Checks if the player's input was of the correct format.
+ * Checks if the player's input is of the correct format.
  *
  * The correct answer format is as follows:
  *  --> row,col,num

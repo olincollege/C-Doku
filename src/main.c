@@ -44,7 +44,7 @@ int main(void) {
     // Get the player's input
     char input[BUFFER];
     get_player_input(input);
-    printf("Your move is %s.\n", input);
+    printf("Your move is %s\n", input);
 
     // Check whether the player's input is in a valid format
     if (check_valid_input(input) != 0) {

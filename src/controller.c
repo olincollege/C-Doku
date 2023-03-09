@@ -47,7 +47,7 @@ int check_valid_input(char *input) {
 }
 
 int get_player_input(char* input) { // is required for player to follow the correct
-  char temp[6];
+  char temp[7];
   printf("Insert next move in row,col,num format: ");
   (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
   if (strchr(temp, '\0') == NULL) {
