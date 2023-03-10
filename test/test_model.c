@@ -32,10 +32,6 @@ const_game_state make_const_complete_board(void) {
   return solution_board;
 }
 
-// update_board tests: 3 correct moves, 1 incorrect move, 2 overwriting moves
-// Correct Move
-//  Update [0][0] = 3
-
 Test(update_board, correct_move_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move){0, 0, '3'};

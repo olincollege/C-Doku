@@ -41,8 +41,7 @@ static int convert_to_int(const char input) { return (input - '0') - 1; }
 int check_valid_input(char *input) {
   const char *valid_nums = "123456789";
   int size = (int) strlen(input);
-  if (size != BUFFER-1) {                    // checking size of string is 5
-    printf("Wrong size input: %d \n", size); // DELETE AFTER DEBUGGING
+  if (size != BUFFER-1) { // checking size of string is 5
     return 1;
   }
   for (int i = 0; i < size - 1;
@@ -50,12 +49,10 @@ int check_valid_input(char *input) {
     if (i % 2 == 0) { // if its even
       if (strchr(valid_nums, input[i]) ==
           NULL) { // if integers are actually correct
-        printf("not num in spot, %c", input[i]); // DELETE AFTER DEBUGGING
         return 1;
       }
     } else {
       if (input[i] != ',') { // if the commas are correct
-        printf("not comma in spot"); // DELETE AFTER DEBUGGING
         return 1;
       }
     }
