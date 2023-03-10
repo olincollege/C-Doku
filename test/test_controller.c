@@ -124,7 +124,7 @@ Test(get_player_level, correct_level_input2) {
 // feeds an incorrect input into get_player_level.
 Test(get_player_level, wrong_level_input1) {
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "0\n");
+  (void)fprintf(stdin_file, "5\n");
   (void)fclose(stdin_file);
   const_game_state test;
   int result = get_player_level(&test);

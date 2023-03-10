@@ -9,7 +9,7 @@ int main(void) {
   // Initialize game state and game info structs
   const_game_state consts;
   var_game_state var;
-  
+
   // Prompt player to select level
   int level_selected = 1;
   while (level_selected) {
@@ -27,7 +27,7 @@ int main(void) {
   while (1) {
 
     // Check win/lose condition
-    if (print_result(&var)==1) {
+    if (print_result(&var) == 1) {
       break;
     }
 
@@ -57,7 +57,7 @@ int main(void) {
 
     // Check whether the player's move is correct
     if (move_correct(&var, &consts) != 0) {
-      if  (var.errors < 2) {
+      if (var.errors < 2) {
         printf("WRONG MOVE. Try again.\n");
       }
       var.errors++;

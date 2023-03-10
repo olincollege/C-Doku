@@ -32,7 +32,8 @@ const_game_state make_const_complete_board(void) {
   return solution_board;
 }
 
-// A correct move should be added to the first spot (upper left corner) of the board.
+// A correct move should be added to the first spot (upper left corner) of the
+// board.
 Test(update_board, correct_move_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move){0, 0, '3'};
@@ -40,7 +41,8 @@ Test(update_board, correct_move_1) {
   cr_assert(eq(chr, test.player_board[test.p_move.row][test.p_move.col], '3'));
 }
 
-// A correct move should be added to the last spot (lower right corner) of the board.
+// A correct move should be added to the last spot (lower right corner) of the
+// board.
 Test(update_board, correct_move_2) {
   var_game_state test = make_starting_board();
   test.p_move = (move){9, 9, '4'};
@@ -134,7 +136,8 @@ Test(check_player_board, incorrect_start) {
   const_game_state answer = make_const_complete_board();
   cr_assert(eq(int, check_player_board(&test, &answer), 1));
 }
-// A board that's almost complete with one empty spot should report not correctly filled.
+// A board that's almost complete with one empty spot should report not
+// correctly filled.
 Test(check_player_board, incorrect_missing) {
   var_game_state test = make_complete_board();
   test.player_board[8][8] = ' ';
@@ -160,214 +163,124 @@ Test(check_solution_board, correct_1) {
 
 // check_solution_board easy 1
 Test(check_solution_board, correct_easy_1) {
-  const_game_state answer = {.solution_board = {
-  "875921346", 
-  "361754892", 
-  "249863715",
-  "584697123", 
-  "713248659", 
-  "926135487",
-  "697412538", 
-  "158379264", 
-  "432586971"}};
+  const_game_state answer = {
+      .solution_board = {"875921346", "361754892", "249863715", "584697123",
+                         "713248659", "926135487", "697412538", "158379264",
+                         "432586971"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board easy 2
 Test(check_solution_board, correct_easy_2) {
-  const_game_state answer = {.solution_board = {
-  "264859317",
-  "981734652",
-  "753621849",
-  "135297486",
-  "892546731",
-  "476318925", 
-  "318975264", 
-  "649182573",
-  "527463198"}};
+  const_game_state answer = {
+      .solution_board = {"264859317", "981734652", "753621849", "135297486",
+                         "892546731", "476318925", "318975264", "649182573",
+                         "527463198"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board easy 3
 Test(check_solution_board, correct_easy_3) {
-  const_game_state answer = {.solution_board = {
-  "856917423",
-  "213864597",
-  "947235816",
-  "185396742",
-  "762148359",
-  "394572681",
-  "521683974",
-  "439751268",
-  "678429135"}};
+  const_game_state answer = {
+      .solution_board = {"856917423", "213864597", "947235816", "185396742",
+                         "762148359", "394572681", "521683974", "439751268",
+                         "678429135"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board easy 4
 Test(check_solution_board, correct_easy_4) {
-  const_game_state answer = {.solution_board = {
-  "387964215",
-  "549218736",
-  "162375984",
-  "426893571",
-  "918547623",
-  "753126849",
-  "635781492",
-  "274639158",
-  "891452367"}};
+  const_game_state answer = {
+      .solution_board = {"387964215", "549218736", "162375984", "426893571",
+                         "918547623", "753126849", "635781492", "274639158",
+                         "891452367"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board easy 5
 Test(check_solution_board, correct_easy_5) {
-  const_game_state answer = {.solution_board = {
-  "613279584",
-  "789543216",
-  "542861379",
-  "831624795",
-  "425798163",
-  "967135842",
-  "256917438",
-  "378456921",
-  "194382657"}};
+  const_game_state answer = {
+      .solution_board = {"613279584", "789543216", "542861379", "831624795",
+                         "425798163", "967135842", "256917438", "378456921",
+                         "194382657"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board medium 1
 Test(check_solution_board, correct_medium_1) {
-  const_game_state answer = {.solution_board = {
-  "517264893",
-  "926835741",
-  "483971562",
-  "135496287",
-  "792518436",
-  "864327915", 
-  "378642159", 
-  "259183674",
-  "641759328"}};
+  const_game_state answer = {
+      .solution_board = {"517264893", "926835741", "483971562", "135496287",
+                         "792518436", "864327915", "378642159", "259183674",
+                         "641759328"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 
 // check_solution_board medium 2
 Test(check_solution_board, correct_medium_2) {
-  const_game_state answer = {.solution_board = {
-  "234158697",
-  "956473182",
-  "178269435",
-  "643925718",
-  "815746329",
-  "729381564", 
-  "592637841", 
-  "381594276",
-  "467812953"}};
+  const_game_state answer = {
+      .solution_board = {"234158697", "956473182", "178269435", "643925718",
+                         "815746329", "729381564", "592637841", "381594276",
+                         "467812953"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board medium 3
 Test(check_solution_board, correct_medium_3) {
-  const_game_state answer = {.solution_board = {
-  "156239784",
-  "743856921",
-  "982147563",
-  "375412896",
-  "614978235",
-  "298365417",
-  "469783152",
-  "521694378",
-  "837521649"}};
+  const_game_state answer = {
+      .solution_board = {"156239784", "743856921", "982147563", "375412896",
+                         "614978235", "298365417", "469783152", "521694378",
+                         "837521649"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board medium 4
 Test(check_solution_board, correct_medium_4) {
-  const_game_state answer = {.solution_board = {
-  "347168259",
-  "258497316",
-  "169532784",
-  "726314895",
-  "594786132",
-  "831925647",
-  "675843921",
-  "982651473",
-  "413279568"}};
+  const_game_state answer = {
+      .solution_board = {"347168259", "258497316", "169532784", "726314895",
+                         "594786132", "831925647", "675843921", "982651473",
+                         "413279568"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board medium 5
 Test(check_solution_board, correct_medium_5) {
-  const_game_state answer = {.solution_board = {
-  "126437598",
-  "943658127",
-  "785219346",
-  "867392451",
-  "394571862",
-  "512846739",
-  "651724983",
-  "239185674",
-  "478963215"}};
+  const_game_state answer = {
+      .solution_board = {"126437598", "943658127", "785219346", "867392451",
+                         "394571862", "512846739", "651724983", "239185674",
+                         "478963215"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board hard 1
 Test(check_solution_board, correct_hard_1) {
-  const_game_state answer = {.solution_board = {
-  "136524798",
-  "895367124",
-  "724981356",
-  "583649271",
-  "261873945",
-  "479152683", 
-  "642718539", 
-  "957436812",
-  "318295467"}};
+  const_game_state answer = {
+      .solution_board = {"136524798", "895367124", "724981356", "583649271",
+                         "261873945", "479152683", "642718539", "957436812",
+                         "318295467"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 
 // check_solution_board hard 2
 Test(check_solution_board, correct_hard_2) {
-  const_game_state answer = {.solution_board = {
-  "491675238",
-  "273981456",
-  "856432917",
-  "712856349",
-  "564793182",
-  "938124675", 
-  "145267893", 
-  "687349521",
-  "329518764"}};
+  const_game_state answer = {
+      .solution_board = {"491675238", "273981456", "856432917", "712856349",
+                         "564793182", "938124675", "145267893", "687349521",
+                         "329518764"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board hard 3
 Test(check_solution_board, correct_hard_3) {
-  const_game_state answer = {.solution_board = {
-  "192784563",
-  "537629841",
-  "486153972",
-  "915348726",
-  "648972135",
-  "723516498",
-  "261495387",
-  "359867214",
-  "874231659"}};
+  const_game_state answer = {
+      .solution_board = {"192784563", "537629841", "486153972", "915348726",
+                         "648972135", "723516498", "261495387", "359867214",
+                         "874231659"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board hard 4
 Test(check_solution_board, correct_hard_4) {
-  const_game_state answer = {.solution_board = {
-  "187364295",
-  "239578641",
-  "564129387",
-  "718932456",
-  "496715832",
-  "325846179",
-  "871693524",
-  "652487913",
-  "943251768"}};
+  const_game_state answer = {
+      .solution_board = {"187364295", "239578641", "564129387", "718932456",
+                         "496715832", "325846179", "871693524", "652487913",
+                         "943251768"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 // check_solution_board hard 5
 Test(check_solution_board, correct_hard_5) {
-  const_game_state answer = {.solution_board = {
-  "451392786",
-  "923867145",
-  "867154329",
-  "136549278",
-  "245783691",
-  "798621453",
-  "582436917",
-  "619275834",
-  "374918562"}};
+  const_game_state answer = {
+      .solution_board = {"451392786", "923867145", "867154329", "136549278",
+                         "245783691", "798621453", "582436917", "619275834",
+                         "374918562"}};
   cr_assert(eq(int, check_solution_board(&answer), 0));
 }
 
@@ -388,7 +301,8 @@ Test(check_solution_board, incorrect_characters) {
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
 
-// Solution board with numbers out of range (less than 1 or greater than 9) should report incorrect.
+// Solution board with numbers out of range (less than 1 or greater than 9)
+// should report incorrect.
 Test(check_solution_board, incorrect_range) {
   const_game_state answer = {
       .solution_board = {"390285746", "625437098", "487906235", "863059427",
@@ -396,6 +310,5 @@ Test(check_solution_board, incorrect_range) {
                          "752398604"}};
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
-
 
 // NOLINTEND(*-magic-numbers)

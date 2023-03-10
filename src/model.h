@@ -5,42 +5,38 @@
 #include <string.h>
 
 // Define useful constants needed in the program.
-enum
-{
-    /** Dimensions of sudoku board.*/
-    BOARD_DIM = 9,
-    /** Number of errors allowed.*/
-    ERRORS = 3,
-    /** Maximum size of input.*/
-    BUFFER = 7,
+enum {
+  /** Dimensions of sudoku board.*/
+  BOARD_DIM = 9,
+  /** Number of errors allowed.*/
+  ERRORS = 3,
+  /** Maximum size of input.*/
+  BUFFER = 7,
 };
 
 // Define game state structs.
 
 // The player's inputted move represented by the row, column, and number.
-typedef struct
-{
-    int row;
-    int col;
-    char num;
+typedef struct {
+  int row;
+  int col;
+  char num;
 } move;
 
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's latest move.
-typedef struct
-{
-    char player_board[BOARD_DIM][BOARD_DIM];
-    size_t errors;
-    move p_move;
+typedef struct {
+  char player_board[BOARD_DIM][BOARD_DIM];
+  size_t errors;
+  move p_move;
 } var_game_state;
 
 // The parts of the sudoku game that do not change, including the initial board,
 // the solution board, and the level.
-typedef struct
-{
-    char solution_board[BOARD_DIM][BOARD_DIM];
-    char init_board[BOARD_DIM][BOARD_DIM];
-    size_t level;
+typedef struct {
+  char solution_board[BOARD_DIM][BOARD_DIM];
+  char init_board[BOARD_DIM][BOARD_DIM];
+  size_t level;
 } const_game_state;
 
 // Hard coded boards
@@ -77,8 +73,6 @@ extern const char solution_hard_4[BOARD_DIM][BOARD_DIM];
 extern const char init_hard_5[BOARD_DIM][BOARD_DIM];
 extern const char solution_hard_5[BOARD_DIM][BOARD_DIM];
 
-
-
 /**
  * Update the player sudoku board with the player's latest move.
  *
@@ -87,7 +81,8 @@ extern const char solution_hard_5[BOARD_DIM][BOARD_DIM];
  * represented by a struct containing the row, column, and number selected by
  * the player.
  *
- * @param var A pointer to the variable game state containing the player board and the player's move.
+ * @param var A pointer to the variable game state containing the player board
+ * and the player's move.
  */
 void update_board(var_game_state *var);
 
@@ -111,8 +106,8 @@ int check_fill(var_game_state *var);
  *
  * Given the variable game state struct and the constant game state struct, this
  * function checks whether the player's move matches the solution board at that
- * index. If the player's move is correct, the function returns 0. Otherwise, the
- * function returns 1.
+ * index. If the player's move is correct, the function returns 0. Otherwise,
+ * the function returns 1.
  *
  * @param var A pointer to the variable game state struct.
  * @param consts A pointer to the constant game state struct.
@@ -138,7 +133,7 @@ int board_complete(var_game_state *var);
  *
  * This function iterates through every space in the player board and checks
  * whether each one matches the corresponding space in the solution board. If
- * everything matches, the function return a 0, and returns a 1 otherwise. 
+ * everything matches, the function return a 0, and returns a 1 otherwise.
  *
  * @param var A pointer to the variable game state struct.
  * @param consts A pointer to the constant game state struct.
@@ -156,7 +151,7 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  *  - Whether each space in a 3x3 square of the 9x9 board contains unique
  * numbers 1-9.
  *
- * Should the solution board be correctly filled, the function returns 0. 
+ * Should the solution board be correctly filled, the function returns 0.
  * Otherwise, it returns 1.
  *
  * @param consts A pointer to the constant game state struct.
@@ -164,17 +159,16 @@ int check_player_board(var_game_state *var, const_game_state *consts);
  */
 int check_solution_board(const_game_state *consts);
 
-
 /**
  * Set up the game state and game information structs based on the chosen level.
- * 
+ *
  * This function chooses a sudoku board based on the level the player chose,
  * (easy, medium, or hard). Then it fills in the board fields of the
  * const_game_state and var_game_state structs with the intial version of the
  * chosen sudoku board (meaning the version with values missing that will be
  * presented to the player) and the solved version of the chosen sudoku board.
- * 
+ *
  * @param var A pointer to the variable game state struct.
  * @param consts A pointer to the constant game state struct.
-*/
+ */
 void setup_game(const_game_state *consts, var_game_state *var);

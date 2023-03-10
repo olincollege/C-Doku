@@ -5,14 +5,14 @@
 
 /**
  * Read the remaining inputs in input line and does nothing with it.
- * 
+ *
  * In cases where the input is too long for stdin to read (or other varying
  * situations where input lines would fail to get saved in the destination
  * properly), the input line needs to be "flushed" and the remaining parts
  * of the input must be discarded for future reads. This function reads the
  * remainders into a local variable that does not get used, which essentially
  * gets rid of it.
-*/
+ */
 static void flush_input_line(void) {
   char null_buffer[BUFFER];
   do {
@@ -40,13 +40,12 @@ static int convert_to_int(const char input) { return (input - '0') - 1; }
 
 int check_valid_input(char *input) {
   const char *valid_nums = "123456789";
-  int size = (int) strlen(input);
-  if (size != BUFFER-1) { // checking size of string is 5
+  int size = (int)strlen(input);
+  if (size != BUFFER - 1) { // checking size of string is 5
     return 1;
   }
-  for (int i = 0; i < size - 1;
-       i++) {         // looping through player's input string
-    if (i % 2 == 0) { // if its even
+  for (int i = 0; i < size - 1; i++) { // looping through player's input string
+    if (i % 2 == 0) {                  // if its even
       if (strchr(valid_nums, input[i]) ==
           NULL) { // if integers are actually correct
         return 1;
@@ -60,10 +59,12 @@ int check_valid_input(char *input) {
   return 0;
 }
 
-int get_player_input(char* input) { // is required for player to follow the correct
+int get_player_input(
+    char *input) { // is required for player to follow the correct
   char temp[BUFFER];
   printf("Insert next move (format should be row,col,value ): ");
-  (void)fgets(temp, sizeof(temp), stdin); // scans player input into char pointer
+  (void)fgets(temp, sizeof(temp),
+              stdin); // scans player input into char pointer
   if (strchr(temp, '\n') == NULL) {
     flush_input_line();
     return 1;
@@ -73,7 +74,8 @@ int get_player_input(char* input) { // is required for player to follow the corr
 }
 
 int add_player_move(char *input, var_game_state *var) {
-  for (size_t i = 0; i < strlen(input);i++) { // if not a comma, write into struct
+  for (size_t i = 0; i < strlen(input);
+       i++) { // if not a comma, write into struct
     if (input[i] != ',') {
       switch (i) {
       case 0:
@@ -94,8 +96,9 @@ int add_player_move(char *input, var_game_state *var) {
 }
 
 int get_player_level(const_game_state *consts) {
-  printf("Select your level -> Demo (Enter 0), Easy (Enter 1), Medium (Enter 2), Hard (Enter 3): ");
-  char temp = (char) getchar();
+  printf("Select your level -> Demo (Enter 0), Easy (Enter 1), Medium (Enter "
+         "2), Hard (Enter 3): ");
+  char temp = (char)getchar();
   flush_input_line();
   if (temp == '0') {
     consts->level = 0;

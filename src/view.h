@@ -18,11 +18,11 @@ void print_board(var_game_state *var);
  * the function prints out that the player has lost and the function returns 1,
  * indicating a game end condition. If the player has filled the board before
  * the error counter reaches 3, then the function prints that the player has won
- * and returns 1. Otherwise, the function returns 0, indicating that the game 
+ * and returns 1. Otherwise, the function returns 0, indicating that the game
  * continues.
  *
  * @param var A pointer to the variable game state struct.
- * @return An integer representing whether the game has finished (1 if the player either wins or loses,
- *  and 0 otherwise).
+ * @return An integer representing whether the game has finished (1 if the
+ * player either wins or loses, and 0 otherwise).
  */
 int print_result(var_game_state *var);
