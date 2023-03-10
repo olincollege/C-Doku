@@ -3,6 +3,8 @@
 
 #include "../src/model.h"
 
+// NOLINTBEGIN(*-magic-numbers)
+
 // Create starting board for tests
 var_game_state make_starting_board(void) {
   var_game_state test = {.player_board = {" 9 28   6", "62    1 8", "  7    3 ",
@@ -33,6 +35,7 @@ const_game_state make_const_complete_board(void) {
 // update_board tests: 3 correct moves, 1 incorrect move, 2 overwriting moves
 // Correct Move
 //  Update [0][0] = 3
+
 Test(update_board, correct_move_1) {
   var_game_state test = make_starting_board();
   test.p_move = (move){0, 0, '3'};
@@ -266,3 +269,4 @@ Test(check_solution_board, incorrect_range) {
                          "752398604"}};
   cr_assert(eq(int, check_solution_board(&answer), 1));
 }
+// NOLINTEND(*-magic-numbers)

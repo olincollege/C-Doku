@@ -45,7 +45,7 @@ int check_valid_input(char *input) {
     printf("Wrong size input: %d \n", size); // DELETE AFTER DEBUGGING
     return 1;
   }
-  for (size_t i = 0; i < (size_t)size - 1;
+  for (int i = 0; i < size - 1;
        i++) {         // looping through player's input string
     if (i % 2 == 0) { // if its even
       if (strchr(valid_nums, input[i]) ==
