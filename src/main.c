@@ -40,7 +40,7 @@ int main(void) {
 
     // Check whether the player's input is in a valid format
     if (correct_size !=0 || check_valid_input(input) != 0) {
-      printf("Please use correct format.\n");
+      printf("Please use correct format (for example '1,1,1').\n");
       continue;
     }
 
