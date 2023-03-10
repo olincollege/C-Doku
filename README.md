@@ -9,12 +9,18 @@ We used [these board puzzles]([https://www.rd.com/wp-content/uploads/2020/12/Sud
 To play the game, download all the files from our [C-Doku repository](https://github.com/olincollege/C-Doku). You can also download it directly [here](https://github.com/olincollege/C-Doku/archive/refs/heads/main.zip). 
 
 ## Instructions
-After downloading the files within the repository, run the following command in the terminal to get into the source directory:
+After downloading the files within the repository, make sure you are in the C-Doku directory. Then, run these commands in the terminal to create a build directory and compile
+the program:
+
 ```
-$ cd path-to-file/C-Doku-main/src
+$ mkdir build
+$ cd build
+$ make clean
+$ make
 ```
-Then, run the following code to run and begin the game:
+Then run the following command to start the game:
+
 ```
-$ gcc main.c && ./a.out
+$ ./src/run_sudoku
 ```
 Have fun playing the game!
