@@ -243,8 +243,6 @@ void setup_game(const_game_state *consts, var_game_state *var) {
     solution = &solution_hard_1;
     initial = &init_hard_1;
     break;
-  default:
-    puts("uh, shwoopsies\n"); // DELETE AFTER DEBUGGING
   }
   for (size_t i = 0; i < BOARD_DIM; i++) {
     for (size_t j = 0; j < BOARD_DIM; j++) {
