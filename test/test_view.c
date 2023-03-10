@@ -41,7 +41,7 @@ Test(print_board, empty_board, .init = cr_redirect_stdout)
                             "  =====================================\n");
 }
 
-// Check that a partially filled board prints correctly
+// Check that a partially filled board prints correctly.
 Test(print_board, partially_filled_board, .init = cr_redirect_stdout)
 {
     var_game_state var;
@@ -80,7 +80,7 @@ Test(print_board, partially_filled_board, .init = cr_redirect_stdout)
                             "  =====================================\n");
 }
 
-// Check that a complete board prints correctly
+// Check that a complete board prints correctly.
 Test(print_board, filled_cells, .init = cr_redirect_stdout)
 {
     var_game_state var;
@@ -120,7 +120,7 @@ Test(print_board, filled_cells, .init = cr_redirect_stdout)
                             "  =====================================\n");
 }
 
-// Check that the game result is a loss when the number of errors equals 3
+// Check that the game result is a loss when the number of errors equals 3.
 Test(print_result, game_loss, .init = cr_redirect_stdout)
 {
     var_game_state var;
@@ -133,7 +133,7 @@ Test(print_result, game_loss, .init = cr_redirect_stdout)
 }
 
 // Check that the game result is a win when the number of errors is less than 3
-// and the board is complete
+// and the board is complete.
 Test(print_result, game_win, .init = cr_redirect_stdout)
 {
     var_game_state var = {.player_board = {"391285746", "625437198", "487916235",
@@ -150,7 +150,7 @@ Test(print_result, game_win, .init = cr_redirect_stdout)
 }
 
 // Check that the game continues when the number of errors is less than 3
-// and the board is incomplete
+// and the board is incomplete.
 Test(print_result, game_continue, .init = cr_redirect_stdout)
 {
     var_game_state var = {.player_board = {" 9 28   6", "62    1 8", "  7    3 ",
