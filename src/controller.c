@@ -73,8 +73,7 @@ int get_player_input(char* input) { // is required for player to follow the corr
 }
 
 int add_player_move(char *input, var_game_state *var) {
-  for (size_t i = 0; i < strlen(input);
-       i++) { // if not a comma, write into struct
+  for (size_t i = 0; i < strlen(input);i++) { // if not a comma, write into struct
     if (input[i] != ',') {
       switch (i) {
       case 0:
