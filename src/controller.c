@@ -36,26 +36,23 @@ static void flush_input_line(void) {
  * converted.
  * @return An integer version of the character integer it is passed.
  */
-static int convert__to_int(const char input) { return (input - '0') - 1; }
+static int convert_to_int(const char input) { return (input - '0') - 1; }
 
 int check_valid_input(char *input) {
   const char *valid_nums = "123456789";
-  int size = strlen(input);
-  if (size != BUFFER-1) {                    // checking size of string is 5
-    printf("wrong size: %d\n", size);
+  int size = (int) strlen(input);
+  if (size != BUFFER-1) { // checking size of string is 5
     return 1;
   }
-  for (size_t i = 0; i < (size_t)size - 1;
+  for (int i = 0; i < size - 1;
        i++) {         // looping through player's input string
     if (i % 2 == 0) { // if its even
       if (strchr(valid_nums, input[i]) ==
           NULL) { // if integers are actually correct
-        printf("not num in spot, %c", input[i]);
         return 1;
       }
     } else {
       if (input[i] != ',') { // if the commas are correct
-        printf("not comma in spot");
         return 1;
       }
     }
@@ -71,7 +68,7 @@ int get_player_input(char* input) { // is required for player to follow the corr
     flush_input_line();
     return 1;
   }
-  (void)strncpy(input, temp, sizeof(temp));
+  (void)strncpy(input, temp, sizeof(temp)); // NOLINT
   return 0;
 }
 
@@ -93,6 +90,22 @@ int add_player_move(char *input, var_game_state *var) {
         return 1;
       }
     }
+  }
+  return 0;
+}
+
+int get_player_level(const_game_state *consts) {
+  printf("Select your level -> Easy (Enter 1), Medium (Enter 2), Hard (Enter 3): ");
+  char temp = (char) getchar();
+  flush_input_line();
+  if (temp == '1') {
+    consts->level = 1;
+  } else if (temp == '2') {
+    consts->level = 2;
+  } else if (temp == '3') {
+    consts->level = 3;
+  } else {
+    return 1;
   }
   return 0;
 }

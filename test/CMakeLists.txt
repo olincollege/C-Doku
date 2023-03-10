@@ -3,15 +3,15 @@
 # conversion warnings for test code.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-conversion")
 
-# add_executable(test_model test_model.c)
-# target_link_libraries(test_model
-#   PRIVATE model
-#   PUBLIC ${CRITERION}
-# )
-# add_test(
-#   NAME test_model
-#   COMMAND test_model ${CRITERION_FLAGS}
-# )
+add_executable(test_model test_model.c)
+target_link_libraries(test_model
+  PRIVATE model
+  PUBLIC ${CRITERION}
+)
+add_test(
+  NAME test_model
+  COMMAND test_model ${CRITERION_FLAGS}
+)
 
 add_executable(test_view test_view.c)
 target_link_libraries(test_view
@@ -23,12 +23,12 @@ add_test(
   COMMAND test_view ${CRITERION_FLAGS}
 )
 
-# add_executable(test_controller test_controller.c)
-# target_link_libraries(test_controller
-#   PRIVATE controller model
-#   PUBLIC ${CRITERION}
-# )
-# add_test(
-#   NAME test_controller
-#   COMMAND test_controller ${CRITERION_FLAGS}
-# )
+add_executable(test_controller test_controller.c)
+target_link_libraries(test_controller
+  PRIVATE controller model
+  PUBLIC ${CRITERION}
+)
+add_test(
+  NAME test_controller
+  COMMAND test_controller ${CRITERION_FLAGS}
+)

@@ -7,48 +7,50 @@
 #include "../src/controller.h"
 
 Test(check_valid_input, valid_input_given) {
-  char *input = "1,2,3";
+  char *input = "1,2,3\n";
   const int ans = 0;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as wrong");
 }
 
 Test(check_valid_input, same_nums) {
-  char *input = "5,5,5";
+  char *input = "5,5,5\n";
   const int ans = 0;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as wrong");
 }
 
 Test(check_valid_input, wrong_input_given) {
-  char *input = "0,10,1";
+  char *input = "0,10,1\n";
   const int ans = 1;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as correct");
 }
 
 Test(check_valid_input, all_commas) {
-  char *input = ",,,,,,";
+  char *input = ",,,,,,\n";
   const int ans = 1;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as correct");
 }
 
 Test(check_valid_input, spaces_not_commas) {
-  char *input = "1 2 3";
+  char *input = "1 2 3\n";
   const int ans = 1;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as correct");
 }
 
 Test(check_valid_input, all_nums) {
-  char *input = "123456";
+  char *input = "123456\n";
   const int ans = 1;
   cr_assert(check_valid_input(input) == ans, "Incorrectly verified as correct");
 }
 
 Test(get_player_input, correct_input) {
+  puts("test 7");
   char input[BUFFER];
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1,2,3");
+  (void)fprintf(stdin_file, "1,2,3\n");
   (void)fclose(stdin_file);
   int result = get_player_input(input);
-  cr_assert(strcmp(input, "1,2,3") == 0, "Input incorrectly");
+  cr_assert(eq(int, result, 0));
+  cr_assert(strcmp(input, "1,2,3\n") == 0, "Input incorrectly");
 }
 
 // Test(get_player_input, correct_input) {
@@ -65,14 +67,16 @@ Test(get_player_input, correct_input) {
 Test(get_player_input, same_input) {
   char input[BUFFER];
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1,1,1");
+  (void)fprintf(stdin_file, "1,1,1\n");
   (void)fclose(stdin_file);
   int result = get_player_input(input);
-  cr_assert(strcmp(input, "1,1,1") == 0, "Input incorrectly");
+  cr_assert(eq(int, result, 0));
+  cr_assert(strcmp(input, "1,1,1\n") == 0, "Input incorrectly");
+  
 }
 
 Test(add_player_move, normal_input) {
-  char *input = "1,2,3";
+  char *input = "1,2,3\n";
   var_game_state test1;
   add_player_move(input, &test1);
   cr_assert(test1.p_move.row == 0, "Wrong row input!");
@@ -81,7 +85,7 @@ Test(add_player_move, normal_input) {
 }
 
 Test(add_player_move, input_with_same_number) {
-  char *input = "1,1,1";
+  char *input = "1,1,1\n";
   var_game_state test1;
   add_player_move(input, &test1);
   cr_expect(test1.p_move.row == 0, "Wrong row input! Expected %i, got %i", 0,

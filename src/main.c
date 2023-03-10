@@ -6,29 +6,22 @@
 #include <string.h>
 
 int main(void) {
-
-  // Initialize game state and game info structs with pre-made boards
+  // Initialize game state and game info structs
   const_game_state consts;
-  consts.max_errors = 1;
-  for (size_t i = 0; i < BOARD_DIM; i++) {
-    for (size_t j = 0; j < BOARD_DIM; j++) {
-        consts.solution_board[i][j] = board_solution[i][j];
-    }
-  }
-  for (size_t i = 0; i < BOARD_DIM; i++) {
-    for (size_t j = 0; j < BOARD_DIM; j++) {
-        consts.init_board[i][j] = board_start[i][j];
-    }
-  }
-
   var_game_state var;
-  for (size_t i = 0; i < BOARD_DIM; i++) {
-    for (size_t j = 0; j < BOARD_DIM; j++) {
-        var.player_board[i][j] = consts.init_board[i][j];
+  
+  // Prompt player to select level
+  int level_selected = 1;
+  while (level_selected) {
+    level_selected = get_player_level(&consts);
+    if (level_selected) {
+      printf("Invalid level selected. Please try again.\n");
     }
   }
-  var.errors = 0;
+  printf("Your level is %zu\n", consts.level);
 
+  // Setup the game according to the level that player chose
+  setup_game(&consts, &var);
 
   // Main loop keeps running while end condition has not been reached
   while (1) {
@@ -47,7 +40,7 @@ int main(void) {
 
     // Check whether the player's input is in a valid format
     if (correct_size !=0 || check_valid_input(input) != 0) {
-      printf("Please use correct format.\n");
+      printf("Please use correct format (for example '1,1,1').\n");
       continue;
     }
 
