@@ -50,14 +50,32 @@ extern const char init_easy_1[BOARD_DIM][BOARD_DIM];
 extern const char solution_easy_1[BOARD_DIM][BOARD_DIM];
 extern const char init_easy_2[BOARD_DIM][BOARD_DIM];
 extern const char solution_easy_2[BOARD_DIM][BOARD_DIM];
+extern const char init_easy_3[BOARD_DIM][BOARD_DIM];
+extern const char solution_easy_3[BOARD_DIM][BOARD_DIM];
+extern const char init_easy_4[BOARD_DIM][BOARD_DIM];
+extern const char solution_easy_4[BOARD_DIM][BOARD_DIM];
+extern const char init_easy_5[BOARD_DIM][BOARD_DIM];
+extern const char solution_easy_5[BOARD_DIM][BOARD_DIM];
 extern const char init_medium_1[BOARD_DIM][BOARD_DIM];
 extern const char solution_medium_1[BOARD_DIM][BOARD_DIM];
 extern const char init_medium_2[BOARD_DIM][BOARD_DIM];
 extern const char solution_medium_2[BOARD_DIM][BOARD_DIM];
+extern const char init_medium_3[BOARD_DIM][BOARD_DIM];
+extern const char solution_medium_3[BOARD_DIM][BOARD_DIM];
+extern const char init_medium_4[BOARD_DIM][BOARD_DIM];
+extern const char solution_medium_4[BOARD_DIM][BOARD_DIM];
+extern const char init_medium_5[BOARD_DIM][BOARD_DIM];
+extern const char solution_medium_5[BOARD_DIM][BOARD_DIM];
 extern const char init_hard_1[BOARD_DIM][BOARD_DIM];
 extern const char solution_hard_1[BOARD_DIM][BOARD_DIM];
 extern const char init_hard_2[BOARD_DIM][BOARD_DIM];
 extern const char solution_hard_2[BOARD_DIM][BOARD_DIM];
+extern const char init_hard_3[BOARD_DIM][BOARD_DIM];
+extern const char solution_hard_3[BOARD_DIM][BOARD_DIM];
+extern const char init_hard_4[BOARD_DIM][BOARD_DIM];
+extern const char solution_hard_4[BOARD_DIM][BOARD_DIM];
+extern const char init_hard_5[BOARD_DIM][BOARD_DIM];
+extern const char solution_hard_5[BOARD_DIM][BOARD_DIM];
 
 
 
