@@ -94,10 +94,12 @@ int add_player_move(char *input, var_game_state *var) {
 }
 
 int get_player_level(const_game_state *consts) {
-  printf("Select your level -> Easy (Enter 1), Medium (Enter 2), Hard (Enter 3): ");
+  printf("Select your level -> Demo (Enter 0), Easy (Enter 1), Medium (Enter 2), Hard (Enter 3): ");
   char temp = (char) getchar();
   flush_input_line();
-  if (temp == '1') {
+  if (temp == '0') {
+    consts->level = 0;
+  } else if (temp == '1') {
     consts->level = 1;
   } else if (temp == '2') {
     consts->level = 2;

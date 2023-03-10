@@ -1,26 +1,25 @@
 #include "model.h"
-//To Do: Delete 
-const char board_start[BOARD_DIM][BOARD_DIM] = {
-  " 9 28   6", 
-  "62    1 8", 
-  "  7    3 ",
-  "8 31  4  ", 
-  "    7 36 ", 
-  " 79      ",
-  "1    49 2", 
-  "94    87 ", 
-  "     8   "};
+const char init_demo[BOARD_DIM][BOARD_DIM] = {
+  "87 921346", 
+  "361754 92", 
+  "249863715",
+  "5846971 3", 
+  "713248659", 
+  "926135487",
+  "697412538", 
+  " 58379264", 
+  "432586971"};
 
-const char board_solution[BOARD_DIM][BOARD_DIM] = {
-  "391285746",
-  "625437198",
-  "487916235",
-  "863159427",
-  "514872369",
-  "279643581",
-  "138764952",
-  "946521873",
-  "752398614"};
+const char solution_demo[BOARD_DIM][BOARD_DIM] = {
+  "875921346", 
+  "361754892", 
+  "249863715",
+  "584697123", 
+  "713248659", 
+  "926135487",
+  "697412538", 
+  "158379264", 
+  "432586971"};
 
 const char init_easy_1[BOARD_DIM][BOARD_DIM] = {
   " 7  2  46", 
@@ -43,6 +42,7 @@ const char solution_easy_1[BOARD_DIM][BOARD_DIM] = {
   "697412538", 
   "158379264", 
   "432586971"};
+
 const char init_easy_2[BOARD_DIM][BOARD_DIM] = {
   "  4 5    ", 
   "9  7346  ", 
@@ -504,6 +504,10 @@ void setup_game(const_game_state *consts, var_game_state *var) {
   const char (*solution)[BOARD_DIM][BOARD_DIM] = &solution_easy_1;
   const char (*initial)[BOARD_DIM][BOARD_DIM] = &init_easy_1;
   switch (consts->level){
+    case 0:
+      solution = &solution_demo;
+      initial = &init_demo;
+      break;
     case 1:
       solution = &solution_easy_1;
       initial = &init_easy_1;
