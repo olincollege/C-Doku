@@ -75,7 +75,7 @@ Test(get_player_input, incorrect_size_input1) {
 Test(get_player_input, incorrect_size_input2) {
   char input[BUFFER];
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1234 \n");
+  (void)fprintf(stdin_file, "12345 \n");
   (void)fclose(stdin_file);
   int result = get_player_input(input);
   cr_assert(eq(int, result, 1));
@@ -104,38 +104,38 @@ Test(add_player_move, input_with_same_number) {
 // feeds a correct input into get_player_level
 Test(get_player_level, correct_level_input1) {
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "1");
+  (void)fprintf(stdin_file, "1\n");
   (void)fclose(stdin_file);
   const_game_state test;
   int result = get_player_level(&test);
   cr_assert(test.level == 1, "Wrong level input!");
-  cr_assert(eq(int, result, 1));
+  cr_assert(eq(int, result, 0));
 }
 // feeds a correct input into get_player_level
 Test(get_player_level, correct_level_input2) {
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "2");
+  (void)fprintf(stdin_file, "2\n");
   (void)fclose(stdin_file);
   const_game_state test;
   int result = get_player_level(&test);
   cr_assert(test.level == 2, "Wrong level input!");
-  cr_assert(eq(int, result, 2));
+  cr_assert(eq(int, result, 0));
 }
 // feeds an incorrect input into get_player_level
 Test(get_player_level, wrong_level_input1) {
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, "0");
+  (void)fprintf(stdin_file, "0\n");
   (void)fclose(stdin_file);
   const_game_state test;
   int result = get_player_level(&test);
-  cr_assert(eq(int, result, 0));
+  cr_assert(eq(int, result, 1));
 }
 // feeds an incorrect input into get_player_level
 Test(get_player_level, wrong_level_input2) {
   FILE *stdin_file = cr_get_redirected_stdin();
-  (void)fprintf(stdin_file, " ");
+  (void)fprintf(stdin_file, " \n");
   (void)fclose(stdin_file);
   const_game_state test;
   int result = get_player_level(&test);
-  cr_assert(eq(int, result, 0));
+  cr_assert(eq(int, result, 1));
 }
