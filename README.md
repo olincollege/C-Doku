@@ -33,9 +33,26 @@ The player starts with a partially filled 9x9 board of digit 1-9 to fill in. The
 ## Dependencies
 
 To play the game, download all the files from our
-[C-Doku repository](https://github.com/olincollege/C-Doku). You can also
-download it directly
-[here](https://github.com/olincollege/C-Doku/archive/refs/heads/main.zip).
+[C-Doku repository](https://github.com/olincollege/C-Doku). You can also download it directly [here](https://github.com/olincollege/C-Doku/archive/refs/heads/main.zip). You should have the following files:
+* .vscode 
+   * settings.json 
+* src
+   * CMakeLists.txt
+   * controller.c
+   * controller.h
+   * main.c
+   * model.c
+   * model.h
+   * view.c
+   * view.h 
+* test
+   * CMakeLists.txt
+   * test_controller.c
+   * test_model.c
+   * test_view.c
+* .gitignore
+* CMakeLists.txt
+* README.md 
 
 ## Instructions
 
