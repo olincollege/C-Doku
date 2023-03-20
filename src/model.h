@@ -12,6 +12,8 @@ enum {
   ERRORS = 3,
   /** Maximum size of input.*/
   BUFFER = 7,
+  /** Maximum number of boards for each level.*/
+  NUM_BOARDS = 5,
 };
 
 // Define game state structs.
@@ -77,6 +79,15 @@ extern const board init_hard_4;
 extern const board solution_hard_4;
 extern const board init_hard_5;
 extern const board solution_hard_5;
+
+// Hard coded board list 
+const board* easy_board_init[NUM_BOARDS];
+const board* easy_board_solution[NUM_BOARDS];
+const board* medium_board_init [NUM_BOARDS];
+const board* medium_board_solution [NUM_BOARDS];
+const board* hard_board_init [NUM_BOARDS];
+const board* hard_board_solution [NUM_BOARDS];
+
 
 /**
  * Update the player sudoku board with the player's latest move.
