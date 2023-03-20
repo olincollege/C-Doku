@@ -81,12 +81,12 @@ extern const board init_hard_5;
 extern const board solution_hard_5;
 
 // Hard coded board list 
-const board* easy_board_init[NUM_BOARDS];
-const board* easy_board_solution[NUM_BOARDS];
-const board* medium_board_init [NUM_BOARDS];
-const board* medium_board_solution [NUM_BOARDS];
-const board* hard_board_init [NUM_BOARDS];
-const board* hard_board_solution [NUM_BOARDS];
+extern const board* const easy_board_init[NUM_BOARDS];
+extern const board* const easy_board_solution[NUM_BOARDS];
+extern const board* const medium_board_init[NUM_BOARDS];
+extern const board* const medium_board_solution[NUM_BOARDS];
+extern const board* const hard_board_init[NUM_BOARDS];
+extern const board* const hard_board_solution[NUM_BOARDS];
 
 
 /**

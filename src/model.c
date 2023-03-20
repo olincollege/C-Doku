@@ -128,12 +128,12 @@ const board solution_hard_5 = {
     "451392786", "923867145", "867154329", "136549278", "245783691",
     "798621453", "582436917", "619275834", "374918562"};
 
-const board* easy_board_init[NUM_BOARDS] = {&init_easy_1, &init_easy_2, &init_easy_3, &init_easy_4, &init_easy_5};
-const board* easy_board_solution[NUM_BOARDS] = {&solution_easy_1 &solution_easy_2, &solution_easy_3, &solution_easy_4, &solution_easy_5};
-const board* medium_board_init[NUM_BOARDS] = {&init_medium_1,&init_medium_2,&init_medium_3,&init_medium_4,&init_medium_5};
-const board* medium_board_solution[NUM_BOARDS] = {&solution_medium_1, &solution_medium_2, &solution_medium_3, &solution_medium_4, &solution_medium_5};
-const board* hard_board_init[NUM_BOARDS] = {&init_hard_1, &init_hard_2, &init_hard_3, &init_hard_4, &init_hard_5};
-const board* hard_board_solution[NUM_BOARDS] = {&solution_hard_1, &solution_hard_2, &solution_hard_3,&solution_hard_4, &solution_hard_5};
+const board* const easy_board_init[NUM_BOARDS] = {&init_easy_1, &init_easy_2, &init_easy_3, &init_easy_4, &init_easy_5};
+const board* const easy_board_solution[NUM_BOARDS] = {&solution_easy_1, &solution_easy_2, &solution_easy_3, &solution_easy_4, &solution_easy_5};
+const board* const medium_board_init[NUM_BOARDS] = {&init_medium_1,&init_medium_2,&init_medium_3,&init_medium_4,&init_medium_5};
+const board* const medium_board_solution[NUM_BOARDS] = {&solution_medium_1, &solution_medium_2, &solution_medium_3, &solution_medium_4, &solution_medium_5};
+const board* const hard_board_init[NUM_BOARDS] = {&init_hard_1, &init_hard_2, &init_hard_3, &init_hard_4, &init_hard_5};
+const board* const hard_board_solution[NUM_BOARDS] = {&solution_hard_1, &solution_hard_2, &solution_hard_3,&solution_hard_4, &solution_hard_5};
 
 void update_board(var_game_state *var) {
   var->player_board[var->p_move.row][var->p_move.col] = var->p_move.num;
