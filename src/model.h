@@ -24,9 +24,7 @@ typedef struct {
 } move;
 
 // The board represented by 9 by 9 array of characters.
-typedef struct {
-  char board_contents[BOARD_DIM][BOARD_DIM];
-} board;
+typedef char board[BOARD_DIM][BOARD_DIM];
 
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's latest move.
@@ -45,38 +43,40 @@ typedef struct {
 } const_game_state;
 
 // Hard coded boards
-extern board board_start;
-extern board board_solution;
-extern board init_easy_1;
-extern board solution_easy_1;
-extern board init_easy_2;
-extern board solution_easy_2;
-extern board init_easy_3;
-extern board solution_easy_3;
-extern board init_easy_4;
-extern board solution_easy_4;
-extern board init_easy_5;
-extern board solution_easy_5;
-extern board init_medium_1;
-extern board solution_medium_1;
-extern board init_medium_2;
-extern board solution_medium_2;
-extern board init_medium_3;
-extern board solution_medium_3;
-extern board init_medium_4;
-extern board solution_medium_4;
-extern board init_medium_5;
-extern board solution_medium_5;
-extern board init_hard_1;
-extern board solution_hard_1;
-extern board init_hard_2;
-extern board solution_hard_2;
-extern board init_hard_3;
-extern board solution_hard_3;
-extern board init_hard_4;
-extern board solution_hard_4;
-extern board init_hard_5;
-extern board solution_hard_5;
+// extern board board_start;
+// extern board board_solution;
+extern const board init_demo;
+extern const board solution_demo;
+extern const board init_easy_1;
+extern const board solution_easy_1;
+extern const board init_easy_2;
+extern const board solution_easy_2;
+extern const board init_easy_3;
+extern const board solution_easy_3;
+extern const board init_easy_4;
+extern const board solution_easy_4;
+extern const board init_easy_5;
+extern const board solution_easy_5;
+extern const board init_medium_1;
+extern const board solution_medium_1;
+extern const board init_medium_2;
+extern const board solution_medium_2;
+extern const board init_medium_3;
+extern const board solution_medium_3;
+extern const board init_medium_4;
+extern const board solution_medium_4;
+extern const board init_medium_5;
+extern const board solution_medium_5;
+extern const board init_hard_1;
+extern const board solution_hard_1;
+extern const board init_hard_2;
+extern const board solution_hard_2;
+extern const board init_hard_3;
+extern const board solution_hard_3;
+extern const board init_hard_4;
+extern const board solution_hard_4;
+extern const board init_hard_5;
+extern const board solution_hard_5;
 
 /**
  * Update the player sudoku board with the player's latest move.
