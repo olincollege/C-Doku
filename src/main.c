@@ -10,6 +10,9 @@ int main(void) {
   const_game_state consts;
   var_game_state var;
 
+  // Seeding our random number generator
+  srand((unsigned int)time(0)); // NOLINT(cert-msc32-c,cert-msc51-cpp)
+
   // Prompt player to select level
   int level_selected = 1;
   while (level_selected) {

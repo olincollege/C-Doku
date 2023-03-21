@@ -2,7 +2,9 @@
 
 #include <stddef.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 // Define useful constants needed in the program.
 enum {
@@ -12,6 +14,8 @@ enum {
   ERRORS = 3,
   /** Maximum size of input.*/
   BUFFER = 7,
+  /** Maximum number of boards for each level.*/
+  NUM_BOARDS = 5,
 };
 
 // Define game state structs.
@@ -23,10 +27,13 @@ typedef struct {
   char num;
 } move;
 
+// The board represented by 9 by 9 array of characters.
+typedef char board[BOARD_DIM][BOARD_DIM];
+
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's latest move.
 typedef struct {
-  char player_board[BOARD_DIM][BOARD_DIM];
+  board player_board;
   size_t errors;
   move p_move;
 } var_game_state;
@@ -34,44 +41,54 @@ typedef struct {
 // The parts of the sudoku game that do not change, including the initial board,
 // the solution board, and the level.
 typedef struct {
-  char solution_board[BOARD_DIM][BOARD_DIM];
-  char init_board[BOARD_DIM][BOARD_DIM];
+  board solution_board;
+  board init_board;
   size_t level;
 } const_game_state;
 
 // Hard coded boards
-extern const char board_start[BOARD_DIM][BOARD_DIM];
-extern const char board_solution[BOARD_DIM][BOARD_DIM];
-extern const char init_easy_1[BOARD_DIM][BOARD_DIM];
-extern const char solution_easy_1[BOARD_DIM][BOARD_DIM];
-extern const char init_easy_2[BOARD_DIM][BOARD_DIM];
-extern const char solution_easy_2[BOARD_DIM][BOARD_DIM];
-extern const char init_easy_3[BOARD_DIM][BOARD_DIM];
-extern const char solution_easy_3[BOARD_DIM][BOARD_DIM];
-extern const char init_easy_4[BOARD_DIM][BOARD_DIM];
-extern const char solution_easy_4[BOARD_DIM][BOARD_DIM];
-extern const char init_easy_5[BOARD_DIM][BOARD_DIM];
-extern const char solution_easy_5[BOARD_DIM][BOARD_DIM];
-extern const char init_medium_1[BOARD_DIM][BOARD_DIM];
-extern const char solution_medium_1[BOARD_DIM][BOARD_DIM];
-extern const char init_medium_2[BOARD_DIM][BOARD_DIM];
-extern const char solution_medium_2[BOARD_DIM][BOARD_DIM];
-extern const char init_medium_3[BOARD_DIM][BOARD_DIM];
-extern const char solution_medium_3[BOARD_DIM][BOARD_DIM];
-extern const char init_medium_4[BOARD_DIM][BOARD_DIM];
-extern const char solution_medium_4[BOARD_DIM][BOARD_DIM];
-extern const char init_medium_5[BOARD_DIM][BOARD_DIM];
-extern const char solution_medium_5[BOARD_DIM][BOARD_DIM];
-extern const char init_hard_1[BOARD_DIM][BOARD_DIM];
-extern const char solution_hard_1[BOARD_DIM][BOARD_DIM];
-extern const char init_hard_2[BOARD_DIM][BOARD_DIM];
-extern const char solution_hard_2[BOARD_DIM][BOARD_DIM];
-extern const char init_hard_3[BOARD_DIM][BOARD_DIM];
-extern const char solution_hard_3[BOARD_DIM][BOARD_DIM];
-extern const char init_hard_4[BOARD_DIM][BOARD_DIM];
-extern const char solution_hard_4[BOARD_DIM][BOARD_DIM];
-extern const char init_hard_5[BOARD_DIM][BOARD_DIM];
-extern const char solution_hard_5[BOARD_DIM][BOARD_DIM];
+// extern board board_start;
+// extern board board_solution;
+extern const board init_demo;
+extern const board solution_demo;
+extern const board init_easy_1;
+extern const board solution_easy_1;
+extern const board init_easy_2;
+extern const board solution_easy_2;
+extern const board init_easy_3;
+extern const board solution_easy_3;
+extern const board init_easy_4;
+extern const board solution_easy_4;
+extern const board init_easy_5;
+extern const board solution_easy_5;
+extern const board init_medium_1;
+extern const board solution_medium_1;
+extern const board init_medium_2;
+extern const board solution_medium_2;
+extern const board init_medium_3;
+extern const board solution_medium_3;
+extern const board init_medium_4;
+extern const board solution_medium_4;
+extern const board init_medium_5;
+extern const board solution_medium_5;
+extern const board init_hard_1;
+extern const board solution_hard_1;
+extern const board init_hard_2;
+extern const board solution_hard_2;
+extern const board init_hard_3;
+extern const board solution_hard_3;
+extern const board init_hard_4;
+extern const board solution_hard_4;
+extern const board init_hard_5;
+extern const board solution_hard_5;
+
+// Hard coded board list
+extern const board *const easy_board_init[NUM_BOARDS];
+extern const board *const easy_board_solution[NUM_BOARDS];
+extern const board *const medium_board_init[NUM_BOARDS];
+extern const board *const medium_board_solution[NUM_BOARDS];
+extern const board *const hard_board_init[NUM_BOARDS];
+extern const board *const hard_board_solution[NUM_BOARDS];
 
 /**
  * Update the player sudoku board with the player's latest move.
