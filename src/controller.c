@@ -1,5 +1,5 @@
 #include "controller.h"
-#include "model.h"
+// #include "model.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -13,9 +13,11 @@
  * remainders into a local variable that does not get used, which essentially
  * gets rid of it.
  */
-static void flush_input_line(void) {
+static void flush_input_line(void)
+{
   char null_buffer[BUFFER];
-  do {
+  do
+  {
     (void)fgets(null_buffer, sizeof(null_buffer), stdin);
   } while (strchr(null_buffer, '\n') == NULL);
 }
@@ -38,20 +40,28 @@ static void flush_input_line(void) {
  */
 static int convert_to_int(const char input) { return (input - '0') - 1; }
 
-int check_valid_input(char *input) {
+int check_valid_input(char *input)
+{
   const char *valid_nums = "123456789";
   int size = (int)strlen(input);
-  if (size != BUFFER - 1) { // checking size of string is 5
+  if (size != BUFFER - 1)
+  { // checking size of string is 5
     return 1;
   }
-  for (int i = 0; i < size - 1; i++) { // looping through player's input string
-    if (i % 2 == 0) {                  // if its even
+  for (int i = 0; i < size - 1; i++)
+  { // looping through player's input string
+    if (i % 2 == 0)
+    { // if its even
       if (strchr(valid_nums, input[i]) ==
-          NULL) { // if integers are actually correct
+          NULL)
+      { // if integers are actually correct
         return 1;
       }
-    } else {
-      if (input[i] != ',') { // if the commas are correct
+    }
+    else
+    {
+      if (input[i] != ',')
+      { // if the commas are correct
         return 1;
       }
     }
@@ -60,24 +70,30 @@ int check_valid_input(char *input) {
 }
 
 int get_player_input(
-    char *input) { // is required for player to follow the correct
+    char *input)
+{ // is required for player to follow the correct
   char temp[BUFFER];
-  printf("Insert next move (format should be row,col,value ): ");
+  printf("Insert next move (format should be row,col,value): ");
   (void)fgets(temp, sizeof(temp),
               stdin); // scans player input into char pointer
-  if (strchr(temp, '\n') == NULL) {
+  if (strchr(temp, '\n') == NULL)
+  {
     flush_input_line();
     return 1;
   }
-  (void)strncpy(input, temp, sizeof(temp)); // NOLINT
+  (void)strncpy(input, temp, BUFFER); // NOLINT
   return 0;
 }
 
-int add_player_move(char *input, var_game_state *var) {
+int add_player_move(char *input, var_game_state *var)
+{
   for (size_t i = 0; i < strlen(input);
-       i++) { // if not a comma, write into struct
-    if (input[i] != ',') {
-      switch (i) {
+       i++)
+  { // if not a comma, write into struct
+    if (input[i] != ',')
+    {
+      switch (i)
+      {
       case 0:
         var->p_move.row = convert_to_int(input[i]);
         break;
@@ -95,20 +111,30 @@ int add_player_move(char *input, var_game_state *var) {
   return 0;
 }
 
-int get_player_level(const_game_state *consts) {
+int get_player_level(const_game_state *consts)
+{
   printf("Select your level -> Demo (Enter 0), Easy (Enter 1), Medium (Enter "
          "2), Hard (Enter 3): ");
   char temp = (char)getchar();
   flush_input_line();
-  if (temp == '0') {
+  if (temp == '0')
+  {
     consts->level = 0;
-  } else if (temp == '1') {
+  }
+  else if (temp == '1')
+  {
     consts->level = 1;
-  } else if (temp == '2') {
+  }
+  else if (temp == '2')
+  {
     consts->level = 2;
-  } else if (temp == '3') {
+  }
+  else if (temp == '3')
+  {
     consts->level = 3;
-  } else {
+  }
+  else
+  {
     return 1;
   }
   return 0;
