@@ -228,7 +228,7 @@ static int check_square(board brd, int row, int col) {
 //   return 0; // board is 9 by 9
 // }
 
-int check_solution_board(board brd) {
+int check_solution_board(const board brd) {
   // checks whether the solution board actually follows all of the rules
   // check rows and cols
   for (int i = 0; i < BOARD_DIM; i++) {
@@ -248,7 +248,8 @@ int check_solution_board(board brd) {
 }
 
 // int check_initial_board(board brd) {
-//   // checks whether the initial board matches the solution board in all of the
+//   // checks whether the initial board matches the solution board in all of
+//   the
 //   // spaces that are filled in
 //   for (int i = 0; i < BOARD_DIM; i++) {
 //     for (int j = 0; j < BOARD_DIM; j++) {

@@ -68,7 +68,7 @@ extern const board *const hard_board_solution[NUM_BOARDS];
  * Should the solution board be correctly filled, the function returns 0.
  * Otherwise, it returns 1.
  *
- * @param consts A pointer to the constant game state struct.
+ * @param brd A board type.
  * @return An integer representing whether the solution board is correct.
  */
-int check_solution_board(board brd);
+int check_solution_board(const board brd);
