@@ -163,7 +163,6 @@ int move_correct(var_game_state *var, const_game_state *consts) {
   return 1;
 }
 
-// TO DO Fix
 int board_complete(var_game_state *var) {
   for (int i = 0; i < BOARD_DIM; i++) {
     for (int j = 0; j < BOARD_DIM; j++) {
@@ -267,15 +266,13 @@ static int check_square(const_game_state *consts, int row, int col) {
 }
 
 int check_solution_board(const_game_state *consts) {
-  // checks whether the solution board actually follows all of the rules
-  // check rows and cols
-  for (int i = 0; i < BOARD_DIM; i++) {
+  for (int i = 0; i < BOARD_DIM; i++) { // check rows and cols
     if (check_row(consts, i) != 0 || check_col(consts, i) != 0) {
       return 1;
     }
   }
-  // Check Squares
-  for (int row = 0; row < BOARD_DIM - 2; row = row + 3) {
+
+  for (int row = 0; row < BOARD_DIM - 2; row = row + 3) { // check Squares
     for (int col = 0; col < BOARD_DIM - 2; col = col + 3) {
       if (check_square(consts, row, col) != 0) {
         return 1;

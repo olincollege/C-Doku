@@ -1,5 +1,4 @@
 #include "controller.h"
-// #include "model.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -81,7 +80,7 @@ int get_player_input(
     flush_input_line();
     return 1;
   }
-  (void)strncpy(input, temp, BUFFER); // NOLINT
+  (void)strncpy(input, temp, BUFFER); // NOLINT(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
   return 0;
 }
 

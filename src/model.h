@@ -47,8 +47,6 @@ typedef struct {
 } const_game_state;
 
 // Hard coded boards
-// extern board board_start;
-// extern board board_solution;
 extern const board init_demo;
 extern const board solution_demo;
 extern const board init_easy_1;
@@ -82,7 +80,7 @@ extern const board solution_hard_4;
 extern const board init_hard_5;
 extern const board solution_hard_5;
 
-// Hard coded board list
+// Hard coded board pointer list
 extern const board *const easy_board_init[NUM_BOARDS];
 extern const board *const easy_board_solution[NUM_BOARDS];
 extern const board *const medium_board_init[NUM_BOARDS];
@@ -136,7 +134,7 @@ int move_correct(var_game_state *var, const_game_state *consts);
 /**
  * Check whether the board is completely filled or not.
  *
- * When called, checks the given board for whether each space is
+ * When called, checks whether each space in the given board is
  * filled. If so, the function returns 0. Otherwise, it returns 1.
  *
  * @param var A pointer to the variable game state struct.
