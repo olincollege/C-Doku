@@ -234,22 +234,24 @@ int check_solution_board(const_game_state *consts) {
 void setup_game(const_game_state *consts, var_game_state *var) {
   const board* solution = &solution_easy_1;
   const board* initial = &init_easy_1;
+  int board_number = (rand() % NUM_BOARDS);
+  printf("You are playing board %d.", board_number);
   switch (consts->level) {
   case 0:
     solution = &solution_demo;
     initial = &init_demo;
     break;
   case 1:
-    solution = &solution_easy_1;
-    initial = &init_easy_1;
+    solution = easy_board_solution[board_number];
+    initial = easy_board_init[board_number];
     break;
   case 2:
-    solution = &solution_medium_1;
-    initial = &init_medium_1;
+    solution = medium_board_solution[board_number];
+    initial = medium_board_init[board_number];
     break;
   case 3:
-    solution = &solution_hard_1;
-    initial = &init_hard_1;
+    solution = hard_board_solution[board_number];
+    initial = hard_board_init[board_number];
     break;
   }
   for (size_t i = 0; i < BOARD_DIM; i++) {

@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 // Define useful constants needed in the program.
 enum {
