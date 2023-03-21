@@ -34,8 +34,6 @@ The player starts with a partially filled 9x9 board of digit 1-9 to fill in. The
 
 To play the game, download all the files from our
 [C-Doku repository](https://github.com/olincollege/C-Doku). You can also download it directly [here](https://github.com/olincollege/C-Doku/archive/refs/heads/main.zip). You should have the following files:
-* .vscode 
-   * settings.json 
 * src
    * CMakeLists.txt
    * controller.c
@@ -50,11 +48,11 @@ To play the game, download all the files from our
    * test_controller.c
    * test_model.c
    * test_view.c
-* .gitignore
 * CMakeLists.txt
 * README.md 
 
 ## Instructions
+First, make sure you are using a Unix environment in order to run the instructions below.
 
 After downloading the files within the repository, make sure you are in the
 C-Doku directory. Then, run these commands in the terminal to create a build
