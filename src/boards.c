@@ -144,6 +144,17 @@ const board *const hard_board_solution[NUM_BOARDS] = {
     &solution_hard_1, &solution_hard_2, &solution_hard_3, &solution_hard_4,
     &solution_hard_5};
 
+/**
+ * Verify that every row in the board only has one instance of the numbers 1-9.
+ *
+ * Given the the solution board and the index of the row of the board to check,
+ * this function uses a loop to first compare each character of the row to a
+ * string containing all possible values to verify that the right input was
+ * given. Then, it converts the value into an integer, and inputs the value into
+ * the corresponding index in a string named check. Essentially when the loop is
+ * finished iterating through the row, it should look identical to the following
+ * string: "123456789".
+ */
 static int check_row(board brd, int row) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++) {
@@ -155,6 +166,18 @@ static int check_row(board brd, int row) {
   return strcmp("123456789", check);
 }
 
+/**
+ * Verify that every column in the board only has one instance of the numbers
+ * 1-9.
+ *
+ * Given the solution board and the index of the column of the board to check,
+ * this function uses a loop to first compare each character of the column to a
+ * string containing all possible values to verify that the right input was
+ * given. Then, it converts the value into an integer, and inputs the value into
+ * the corresponding index in a string named check. Essentially when the loop is
+ * finished iterating through the column, it should look identical to the
+ * following string: "123456789"
+ */
 static int check_col(board brd, int col) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++) {
@@ -166,6 +189,18 @@ static int check_col(board brd, int col) {
   return strcmp("123456789", check);
 }
 
+/**
+ * Verify that every 3x3 square on the board has only one instance of the
+ * numbers 1-9.
+ *
+ * Given the solution boards and the index of the top left corner of the square
+ * to check, this function uses 2 loops to first compare each character of the
+ * square to a string containing all possible values to verify that the right
+ * input was given. Then, it converts the value into an integer, and inputs the
+ * value into the corresponding index in a string named check. Essentially when
+ * the loop is finished iterating through the square, it should look identical
+ * to the following string: "123456789"
+ */
 static int check_square(board brd, int row, int col) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = row; i < row + 3; i++) {
