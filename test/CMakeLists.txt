@@ -3,6 +3,17 @@
 # conversion warnings for test code.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-conversion")
 
+
+add_executable(test_boards test_boards.c)
+target_link_libraries(test_boards
+  PRIVATE boards
+  PUBLIC ${CRITERION}
+)
+add_test(
+  NAME test_boards
+  COMMAND test_boards ${CRITERION_FLAGS}
+)
+
 add_executable(test_model test_model.c)
 target_link_libraries(test_model
   PRIVATE model

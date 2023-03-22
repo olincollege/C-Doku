@@ -1,5 +1,6 @@
 #pragma once
 
+#include "boards.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,27 +9,19 @@
 
 // Define useful constants needed in the program.
 enum {
-  /** Dimensions of sudoku board.*/
-  BOARD_DIM = 9,
   /** Number of errors allowed.*/
   ERRORS = 3,
   /** Maximum size of input.*/
   BUFFER = 7,
-  /** Maximum number of boards for each level.*/
-  NUM_BOARDS = 5,
 };
 
 // Define game state structs.
-
 // The player's inputted move represented by the row, column, and number.
 typedef struct {
   int row;
   int col;
   char num;
 } move;
-
-// The board represented by 9 by 9 array of characters.
-typedef char board[BOARD_DIM][BOARD_DIM];
 
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's latest move.
@@ -45,48 +38,6 @@ typedef struct {
   board init_board;
   size_t level;
 } const_game_state;
-
-// Hard coded boards
-extern const board init_demo;
-extern const board solution_demo;
-extern const board init_easy_1;
-extern const board solution_easy_1;
-extern const board init_easy_2;
-extern const board solution_easy_2;
-extern const board init_easy_3;
-extern const board solution_easy_3;
-extern const board init_easy_4;
-extern const board solution_easy_4;
-extern const board init_easy_5;
-extern const board solution_easy_5;
-extern const board init_medium_1;
-extern const board solution_medium_1;
-extern const board init_medium_2;
-extern const board solution_medium_2;
-extern const board init_medium_3;
-extern const board solution_medium_3;
-extern const board init_medium_4;
-extern const board solution_medium_4;
-extern const board init_medium_5;
-extern const board solution_medium_5;
-extern const board init_hard_1;
-extern const board solution_hard_1;
-extern const board init_hard_2;
-extern const board solution_hard_2;
-extern const board init_hard_3;
-extern const board solution_hard_3;
-extern const board init_hard_4;
-extern const board solution_hard_4;
-extern const board init_hard_5;
-extern const board solution_hard_5;
-
-// Hard coded board pointer list
-extern const board *const easy_board_init[NUM_BOARDS];
-extern const board *const easy_board_solution[NUM_BOARDS];
-extern const board *const medium_board_init[NUM_BOARDS];
-extern const board *const medium_board_solution[NUM_BOARDS];
-extern const board *const hard_board_init[NUM_BOARDS];
-extern const board *const hard_board_solution[NUM_BOARDS];
 
 /**
  * Update the player sudoku board with the player's latest move.
@@ -155,24 +106,6 @@ int board_complete(var_game_state *var);
  * @return An integer representing whether the board is correctly filled.
  */
 int check_player_board(var_game_state *var, const_game_state *consts);
-
-/**
- * Check whether the solution board is correct.
- *
- * When called, check if the given board follows sudoku rules. The
- * logic this function checks is as follows:
- *  - Whether each space in each row contains unique numbers 1-9.
- *  - Whether each space in each column contains unique numbers 1-9.
- *  - Whether each space in a 3x3 square of the 9x9 board contains unique
- * numbers 1-9.
- *
- * Should the solution board be correctly filled, the function returns 0.
- * Otherwise, it returns 1.
- *
- * @param consts A pointer to the constant game state struct.
- * @return An integer representing whether the solution board is correct.
- */
-int check_solution_board(const_game_state *consts);
 
 /**
  * Set up the game state and game information structs based on the chosen level.
