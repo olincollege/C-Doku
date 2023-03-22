@@ -2,10 +2,7 @@
 
 ## Project Description
 
-An interactive sudoku game implemented in C! C-Doku is a C implementation of
-Sudoku in your very own terminal! The game prints a beautiful visualization of
-an incomplete board for a player to solve based on the level they chose, and the
-user can specify a number to input into a specific row and column. The
+C-Doku is a C implementation of Sudoku in your very own terminal! The game prints a minimalist visualization of an incomplete board for a player to solve based on the level they chose, and the user can specify a number to input into a specific row and column. The
 visualization will continue updating based on the user input. The player wins if
 they complete the board before getting 3 errors!
 
@@ -51,16 +48,17 @@ To play the game, download all the files from our
 * CMakeLists.txt
 * README.md 
 
-## Instructions
-First, make sure you are using a Unix environment in order to run the instructions below.
+This code only relies on C standard libraries, which means that you won't need to worry about importing any additional libraries.
 
-After downloading the files within the repository, make sure you are in the
-C-Doku directory. Then, run these commands in the terminal to create a build
-directory and compile the program:
+## Instructions
+To get started, please ensure that you are using a Unix environment to follow the instructions below.
+
+Once you have downloaded the files from the repository, navigate to the C-Doku directory. From there, you can create a build directory and compile the program by running the following commands in your terminal:
 
 ```
 $ mkdir build
 $ cd build
+$ cmake ..
 $ make clean
 $ make
 ```
