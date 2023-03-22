@@ -85,7 +85,7 @@ int move_correct(var_game_state *var, const_game_state *consts);
 /**
  * Check whether the board is completely filled or not.
  *
- * When called, checks the given board for whether each space is
+ * When called, checks whether each space in the given board is
  * filled. If so, the function returns 0. Otherwise, it returns 1.
  *
  * @param var A pointer to the variable game state struct.
