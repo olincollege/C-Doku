@@ -2,6 +2,7 @@
 #include <criterion/new/assert.h>
 
 #include "../src/model.h"
+#include "../src/boards.h"
 
 // NOLINTBEGIN(*-magic-numbers)
 

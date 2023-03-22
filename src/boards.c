@@ -155,7 +155,7 @@ const board *const hard_board_solution[NUM_BOARDS] = {
  * finished iterating through the row, it should look identical to the following
  * string: "123456789".
  */
-static int check_row(board brd, int row) {
+static int check_row(const board brd, int row) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++) {
     if (strchr("123456789", brd[row][i]) != NULL) {
@@ -178,7 +178,7 @@ static int check_row(board brd, int row) {
  * finished iterating through the column, it should look identical to the
  * following string: "123456789"
  */
-static int check_col(board brd, int col) {
+static int check_col(const board brd, int col) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = 0; i < BOARD_DIM; i++) {
     if (strchr("123456789", brd[i][col]) != NULL) {
@@ -201,7 +201,7 @@ static int check_col(board brd, int col) {
  * the loop is finished iterating through the square, it should look identical
  * to the following string: "123456789"
  */
-static int check_square(board brd, int row, int col) {
+static int check_square(const board brd, int row, int col) {
   char check[BOARD_DIM + 1] = "         ";
   for (int i = row; i < row + 3; i++) {
     for (int j = col; j < col + 3; j++) {

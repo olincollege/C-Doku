@@ -23,8 +23,6 @@ typedef struct {
   char num;
 } move;
 
-
-
 // The parts of the sudoku game that change, including the player's board, the
 // number of errors the player has made, and the player's latest move.
 typedef struct {
