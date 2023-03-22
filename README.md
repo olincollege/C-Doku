@@ -45,6 +45,7 @@ To play the game, download all the files from our
    * test_controller.c
    * test_model.c
    * test_view.c
+* .gitignore
 * CMakeLists.txt
 * README.md 
 
