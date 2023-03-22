@@ -3,9 +3,9 @@
 
 #include "../src/boards.h"
 
-// NOLINTBEGIN(*-magic-numbers)
+// Check whether the boards that we entered manually follow sudoku rules
 
-// check whether the boards that we entered manually follow sudoku rules
+// NOLINTBEGIN(*-magic-numbers)
 // check_solution_board easy 1
 Test(check_solution_board, correct_easy_1) {
   cr_assert(eq(int, check_solution_board(solution_easy_1), 0));

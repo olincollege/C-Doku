@@ -68,9 +68,9 @@ int get_player_input(
     flush_input_line();
     return 1;
   }
-  (void)strncpy(
-      input, temp,
-      BUFFER); // NOLINT(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
+  // NOLINTBEGIN(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
+  (void)strncpy(input, temp, BUFFER);
+  // NOLINTEND(clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling)
   return 0;
 }
 
