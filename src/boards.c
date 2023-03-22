@@ -70,31 +70,13 @@ static int check_square(const board brd, int row, int col) {
   return strcmp("123456789", check);
 }
 
-static int check_dim(board brd) {
-  int i,j;
-  for (i = 0; i < 9; i++) {
-    for (j = 0; j < 9; j++) {
-      if (brd[i][j] == '\0') {
-        puts("It is not 9x9\n");
-        printf("we stopped at i=%d, j=%d\n", i,j);
-        return 1; // if there is an empty value, return 1
-        }
-      }
-    }
-  return 0; // board is 9 by 9
-}
-
 int check_solution_board(const board brd) {
-  if (check_dim != 0) { // checks whether dimensions are correct
-    return 1;
-  }
-
-  for (int i = 0; i < BOARD_DIM; i++) {   // checks rows and cols
+  for (int i = 0; i < BOARD_DIM; i++) { // checks rows and cols
     if (check_row(brd, i) != 0 || check_col(brd, i) != 0) {
       return 1;
     }
   }
-  
+
   for (int row = 0; row < BOARD_DIM - 2; row = row + 3) { // checks squares
     for (int col = 0; col < BOARD_DIM - 2; col = col + 3) {
       if (check_square(brd, row, col) != 0) {
@@ -104,17 +86,3 @@ int check_solution_board(const board brd) {
   }
   return 0;
 }
-
-// int check_initial_board(board init, board solution) {
-//   // checks whether the initial board matches the solution board in all of
-//   // spaces that are filled in
-//   for (int i = 0; i < BOARD_DIM; i++) {
-//     for (int j = 0; j < BOARD_DIM; j++) {
-//       if (consts->init_board[i][j] != ' ' &&
-//           consts->init_board[i][j] != consts->solution_board[i][j]) {
-//         return 1;
-//       }
-//     }
-//   }
-//   return 0;
-// }

@@ -1,8 +1,8 @@
 #include <criterion/criterion.h>
 #include <criterion/new/assert.h>
 
-#include "../src/model.h"
 #include "../src/boards.h"
+#include "../src/model.h"
 
 // NOLINTBEGIN(*-magic-numbers)
 
